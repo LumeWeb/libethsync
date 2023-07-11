@@ -1,4 +1,9 @@
-import { createBeaconConfig } from "@lodestar/config";
+import {
+  createBeaconConfig,
+  BeaconConfig,
+  ChainForkConfig,
+} from "@lodestar/config";
+import { allForks } from "@lodestar/types";
 import { BEACON_SYNC_SUPER_MAJORITY, mainnetConfig } from "./constants.js";
 import { networksChainConfig } from "@lodestar/config/networks";
 import { fromHexString } from "@chainsafe/ssz";
@@ -9,7 +14,14 @@ import axiosRetry from "axios-retry";
 import axios from "axios";
 import { digest } from "@chainsafe/as-sha256";
 import { concatBytes } from "@noble/hashes/utils";
-import { deserializeSyncCommittee } from "@lodestar/light-client/utils";
+import {
+  deserializeSyncCommittee,
+  isValidMerkleBranch,
+} from "@lodestar/light-client/utils";
+import {
+  BLOCK_BODY_EXECUTION_PAYLOAD_DEPTH as EXECUTION_PAYLOAD_DEPTH,
+  BLOCK_BODY_EXECUTION_PAYLOAD_INDEX as EXECUTION_PAYLOAD_INDEX,
+} from "@lodestar/params";
 
 export function getDefaultClientConfig() {
   const chainConfig = createBeaconConfig(
@@ -102,4 +114,20 @@ export async function getConsensusOptimisticUpdate() {
   }
 
   return update.data;
+}
+function isValidLightClientHeader(
+  config: ChainForkConfig,
+  header: allForks.LightClientHeader,
+): boolean {
+  return isValidMerkleBranch(
+    config
+      .getExecutionForkTypes(header.beacon.slot)
+      .ExecutionPayloadHeader.hashTreeRoot(
+        (header as capella.LightClientHeader).execution,
+      ),
+    (header as capella.LightClientHeader).executionBranch,
+    EXECUTION_PAYLOAD_DEPTH,
+    EXECUTION_PAYLOAD_INDEX,
+    header.beacon.bodyRoot,
+  );
 }
