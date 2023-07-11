@@ -71,7 +71,7 @@ export default class Client extends BaseClient {
   }
 
   protected syncFromGenesis(): Promise<Uint8Array[]> {
-    return Promise.resolve([]);
+    return this.syncFromLastUpdate(0);
   }
 
   protected async syncFromLastUpdate(
