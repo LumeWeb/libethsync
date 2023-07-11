@@ -1,6 +1,6 @@
 {
     "name": "@lumeweb/libethsync",
-    "version": "0.1.0-develop.22",
+    "version": "0.1.0-develop.21",
     "type": "module",
     "repository": {
         "type": "git",
@@ -27,17 +27,17 @@
         }
     },
     "dependencies": {
-        "@ethereumjs/block": "4.0.0",
-        "@ethereumjs/blockchain": "6.0.0",
-        "@ethereumjs/common": "3.0.0",
-        "@ethereumjs/trie": "5.0.0",
-        "@ethereumjs/tx": "4.0.0",
-        "@ethereumjs/util": "8.0.0",
-        "@ethereumjs/vm": "6.0.0",
         "@chainsafe/as-sha256": "^0.3.1",
         "@chainsafe/bls": "7.1.1",
         "@chainsafe/blst": "0.2.9",
         "@chainsafe/ssz": "0.11.1",
+        "@ethereumjs/block": "4.3.0",
+        "@ethereumjs/blockchain": "6.3.0",
+        "@ethereumjs/common": "^3.2.0",
+        "@ethereumjs/trie": "5.1.0",
+        "@ethereumjs/tx": "4.2.0",
+        "@ethereumjs/util": "8.1.0",
+        "@ethereumjs/vm": "6.5.0",
         "@lodestar/config": "1.9.1",
         "@lodestar/light-client": "1.9.1",
         "@lodestar/params": "1.9.1",
@@ -46,7 +46,7 @@
         "axios": "^1.4.0",
         "axios-retry": "^3.5.1",
         "detect-node": "^2.1.0",
-        "ethereum-cryptography": "^1.1.2",
+        "ethereum-cryptography": "^2.0.0",
         "node-cache": "^5.1.2",
         "rlp": "^3.0.0",
         "web3-types": "^1.0.1"
