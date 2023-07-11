@@ -1,3 +1,10 @@
+# [0.1.0-develop.7](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.6...v0.1.0-develop.7) (2023-07-11)
+
+
+### Bug Fixes
+
+* export RPC types ([bfa5d22](https://git.lumeweb.com/LumeWeb/libethsync/commit/bfa5d227a056a11b3aed61087d5c3c5b1006e43d))
+
 # [0.1.0-develop.6](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.5...v0.1.0-develop.6) (2023-07-11)
 
 # [0.1.0-develop.5](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.4...v0.1.0-develop.5) (2023-07-11)
