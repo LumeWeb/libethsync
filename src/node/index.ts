@@ -11,3 +11,4 @@ function createDefaultClient(beaconUrl: string): Client {
 }
 
 export { Client, Prover, Store, createDefaultClient };
+export * from "#interfaces.js";

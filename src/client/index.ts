@@ -17,3 +17,4 @@ function createDefaultClient(
 
 export { Client, Prover, VerifyingProvider, createDefaultClient };
 export { IClientProver, ProverRequestCallback };
+export * from "#interfaces.js";
