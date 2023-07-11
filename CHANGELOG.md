@@ -1,3 +1,10 @@
+# [0.1.0-develop.22](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.21...v0.1.0-develop.22) (2023-07-11)
+
+
+### Bug Fixes
+
+* ensure @ethereumjs/util matches the version required by @ethereumjs/evm ([0949e8d](https://git.lumeweb.com/LumeWeb/libethsync/commit/0949e8d427b6a70497bc5c93bd6df5a72247b848))
+
 # [0.1.0-develop.21](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.20...v0.1.0-develop.21) (2023-07-11)
 
 
