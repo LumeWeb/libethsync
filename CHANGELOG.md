@@ -1,3 +1,10 @@
+# [0.1.0-develop.3](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.2...v0.1.0-develop.3) (2023-07-11)
+
+
+### Bug Fixes
+
+* export all interfaces ([a50271e](https://git.lumeweb.com/LumeWeb/libethsync/commit/a50271ec5bb2f8f702b70fc450f64fba7a5ab0e8))
+
 # [0.1.0-develop.2](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.1...v0.1.0-develop.2) (2023-07-11)
 
 
