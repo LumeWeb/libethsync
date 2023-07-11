@@ -1,3 +1,10 @@
+# [0.1.0-develop.21](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.20...v0.1.0-develop.21) (2023-07-11)
+
+
+### Bug Fixes
+
+* @noble/curves import ([5c8394a](https://git.lumeweb.com/LumeWeb/libethsync/commit/5c8394af2d4561247605181720e799fc5c271f17))
+
 # [0.1.0-develop.20](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.19...v0.1.0-develop.20) (2023-07-11)
 
 # [0.1.0-develop.19](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.18...v0.1.0-develop.19) (2023-07-11)
