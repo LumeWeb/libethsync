@@ -1,12 +1,12 @@
 {
     "name": "@lumeweb/libethclient",
-    "version": "0.1.0-develop.3",
+    "version": "0.1.0-develop.4",
     "lockfileVersion": 3,
     "requires": true,
     "packages": {
         "": {
             "name": "@lumeweb/libethclient",
-            "version": "0.1.0-develop.3",
+            "version": "0.1.0-develop.4",
             "dependencies": {
                 "@chainsafe/as-sha256": "^0.3.1",
                 "@chainsafe/bls": "7.1.1",
