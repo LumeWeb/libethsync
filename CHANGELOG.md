@@ -1,3 +1,10 @@
+# [0.1.0-develop.13](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.12...v0.1.0-develop.13) (2023-07-11)
+
+
+### Bug Fixes
+
+* use call to getDefaultClientConfig to get chain config ([948d4d6](https://git.lumeweb.com/LumeWeb/libethsync/commit/948d4d610939e4f19210c187eec9e03d89060cd4))
+
 # [0.1.0-develop.12](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.11...v0.1.0-develop.12) (2023-07-11)
 
 
