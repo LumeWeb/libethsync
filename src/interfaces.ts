@@ -13,6 +13,12 @@ export interface IProver {
 
 export interface IStore {
   addUpdate(period: number, update: LightClientUpdate): Promise<void>;
+
+  getUpdate(period: number): Uint8Array;
+
+  getCommittee(period: number): Uint8Array;
+
+  getCommitteeHashes(period: number, count: number): Uint8Array;
 }
 
 export interface IVerifyingProvider {
