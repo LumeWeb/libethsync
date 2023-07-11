@@ -12,7 +12,7 @@ import {
   optimisticUpdateFromJSON,
   optimisticUpdateVerify,
 } from "#util.js";
-import { equalBytes } from "@noble/curves/abstract/utils.js";
+import { equalBytes } from "@noble/curves/abstract/utils";
 import { IClientVerifyingProvider } from "#client/verifyingProvider.js";
 
 interface Config extends BaseClientOptions {
