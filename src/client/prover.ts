@@ -10,7 +10,7 @@ import * as capella from "@lodestar/types/capella";
 export type ProverRequestCallback = (
   action: string,
   args?: ConsensusCommitteeHashesRequest | ConsensusCommitteePeriodRequest,
-) => any;
+) => Promise<any>;
 
 export interface IClientProver extends IProver {
   get callback(): ProverRequestCallback;
