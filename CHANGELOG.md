@@ -1,3 +1,10 @@
+# [0.1.0-develop.16](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.15...v0.1.0-develop.16) (2023-07-11)
+
+
+### Bug Fixes
+
+* fix reference to isValidLightClientHeader ([0f8746d](https://git.lumeweb.com/LumeWeb/libethsync/commit/0f8746dac2442086cc4355a00c80c93178383141))
+
 # [0.1.0-develop.15](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.14...v0.1.0-develop.15) (2023-07-11)
 
 
