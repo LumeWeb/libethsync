@@ -1,3 +1,10 @@
+# [0.1.0-develop.11](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.10...v0.1.0-develop.11) (2023-07-11)
+
+
+### Bug Fixes
+
+* return data property from update ([a5c0153](https://git.lumeweb.com/LumeWeb/libethsync/commit/a5c01533fe81f12b0651c6e039bb9f29b7c0ec93))
+
 # [0.1.0-develop.10](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.9...v0.1.0-develop.10) (2023-07-11)
 
 # [0.1.0-develop.9](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.8...v0.1.0-develop.9) (2023-07-11)
