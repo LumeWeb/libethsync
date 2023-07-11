@@ -1,3 +1,10 @@
+# [0.1.0-develop.2](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.1...v0.1.0-develop.2) (2023-07-11)
+
+
+### Bug Fixes
+
+* trigger release ([0bc05bf](https://git.lumeweb.com/LumeWeb/libethsync/commit/0bc05bf6ca4d03b29f293cf90834683b545ef499))
+
 # [0.1.0-develop.1](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.0.1...v0.1.0-develop.1) (2023-07-11)
 
 
