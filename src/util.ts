@@ -41,6 +41,8 @@ export async function optimisticUpdateVerify(
       header.beacon,
     );
 
+    const chainConfig = getDefaultClientConfig().chainConfig;
+
     const committeeFast = deserializeSyncCommittee({
       pubkeys: committee,
       aggregatePubkey: bls.PublicKey.aggregate(
@@ -50,7 +52,7 @@ export async function optimisticUpdateVerify(
 
     try {
       assertValidSignedHeader(
-        getDefaultClientConfig().chainConfig,
+        chainConfig,
         committeeFast,
         syncAggregate,
         headerBlockRoot,
@@ -66,7 +68,7 @@ export async function optimisticUpdateVerify(
       return { correct: false, reason: "insufficient signatures" };
     }
 
-    if (!this.isValidLightClientHeader(this.config.chainConfig, header)) {
+    if (!this.isValidLightClientHeader(chainConfig, header)) {
       return { correct: false, reason: "invalid header" };
     }
 
