@@ -1,3 +1,10 @@
+# [0.1.0-develop.4](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.3...v0.1.0-develop.4) (2023-07-11)
+
+
+### Bug Fixes
+
+* add getter for store in baseclient ([3a48a52](https://git.lumeweb.com/LumeWeb/libethsync/commit/3a48a52a5397b6ae02406a05e90a623fc920b875))
+
 # [0.1.0-develop.3](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.2...v0.1.0-develop.3) (2023-07-11)
 
 
