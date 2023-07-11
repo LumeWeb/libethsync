@@ -80,7 +80,7 @@ export async function optimisticUpdateVerify(
       return { correct: false, reason: "insufficient signatures" };
     }
 
-    if (!this.isValidLightClientHeader(chainConfig, header)) {
+    if (!isValidLightClientHeader(chainConfig, header)) {
       return { correct: false, reason: "invalid header" };
     }
 
