@@ -1,24 +1,24 @@
 {
-    "name": "@lumeweb/libethclient",
-    "version": "0.1.0-develop.21",
+    "name": "@lumeweb/libethsync",
+    "version": "0.1.0-develop.20",
     "lockfileVersion": 3,
     "requires": true,
     "packages": {
         "": {
-            "name": "@lumeweb/libethclient",
-            "version": "0.1.0-develop.21",
+            "name": "@lumeweb/libethsync",
+            "version": "0.1.0-develop.20",
             "dependencies": {
                 "@chainsafe/as-sha256": "^0.3.1",
                 "@chainsafe/bls": "7.1.1",
                 "@chainsafe/blst": "0.2.9",
                 "@chainsafe/ssz": "0.11.1",
-                "@ethereumjs/block": "4.3.0",
-                "@ethereumjs/blockchain": "6.3.0",
-                "@ethereumjs/common": "^3.2.0",
-                "@ethereumjs/trie": "5.1.0",
-                "@ethereumjs/tx": "4.2.0",
-                "@ethereumjs/util": "8.1.0",
-                "@ethereumjs/vm": "6.5.0",
+                "@ethereumjs/block": "4.0.0",
+                "@ethereumjs/blockchain": "6.0.0",
+                "@ethereumjs/common": "3.0.0",
+                "@ethereumjs/trie": "5.0.0",
+                "@ethereumjs/tx": "4.0.0",
+                "@ethereumjs/util": "8.0.0",
+                "@ethereumjs/vm": "6.0.0",
                 "@lodestar/config": "1.9.1",
                 "@lodestar/light-client": "1.9.1",
                 "@lodestar/params": "1.9.1",
@@ -27,7 +27,7 @@
                 "axios": "^1.4.0",
                 "axios-retry": "^3.5.1",
                 "detect-node": "^2.1.0",
-                "ethereum-cryptography": "^2.0.0",
+                "ethereum-cryptography": "^1.1.2",
                 "node-cache": "^5.1.2",
                 "rlp": "^3.0.0",
                 "web3-types": "^1.0.1"
@@ -1610,36 +1610,35 @@
             }
         },
         "node_modules/@ethereumjs/block": {
-            "version": "4.3.0",
-            "resolved": "https://registry.npmjs.org/@ethereumjs/block/-/block-4.3.0.tgz",
-            "integrity": "sha512-NHzfNIqadldAB91LjkHOaQgMNA/Pc7C1N9NAm/QpewW6D0B9bSIYYnxwmv3EUyd/sbfBEheLFpwrBpvkCN+iAA==",
+            "version": "4.0.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/block/-/block-4.0.0.tgz",
+            "integrity": "sha512-OewaOEzcplspEeoDWyEKX7ENuXYUQMUsO18payHrPBC7kTGDcWr+qx+F6gMMC/pyJvS9l9LpLmMOS6ENIK62kA==",
             "dependencies": {
-                "@ethereumjs/common": "^3.2.0",
-                "@ethereumjs/rlp": "^4.0.1",
-                "@ethereumjs/trie": "^5.1.0",
-                "@ethereumjs/tx": "^4.2.0",
-                "@ethereumjs/util": "^8.1.0",
-                "ethereum-cryptography": "^2.0.0"
+                "@ethereumjs/common": "^3.0.0",
+                "@ethereumjs/rlp": "^4.0.0",
+                "@ethereumjs/trie": "^5.0.0",
+                "@ethereumjs/tx": "^4.0.0",
+                "@ethereumjs/util": "^8.0.0",
+                "ethereum-cryptography": "^1.1.2"
             },
             "engines": {
                 "node": ">=14"
             }
         },
         "node_modules/@ethereumjs/blockchain": {
-            "version": "6.3.0",
-            "resolved": "https://registry.npmjs.org/@ethereumjs/blockchain/-/blockchain-6.3.0.tgz",
-            "integrity": "sha512-2FLtkThtA0SsfG6v7BzElEwLHMYE0nQf8BFGO/+HeFTwldWw0tybaobzJcX/p0j9bwEsRtnadU/iTAbXsHuNFw==",
+            "version": "6.0.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/blockchain/-/blockchain-6.0.0.tgz",
+            "integrity": "sha512-JdgY2jD4ymzcCbAcX4XVX1dTLoVqEIyaBVPVljYlPzJEdIoFa5JYpZheNlZGtP11d1OKhhyTqfqLuYThxI32Tw==",
             "dependencies": {
-                "@ethereumjs/block": "^4.3.0",
-                "@ethereumjs/common": "^3.2.0",
-                "@ethereumjs/ethash": "^2.1.0",
-                "@ethereumjs/rlp": "^4.0.1",
-                "@ethereumjs/trie": "^5.1.0",
-                "@ethereumjs/tx": "^4.2.0",
-                "@ethereumjs/util": "^8.1.0",
+                "@ethereumjs/block": "^4.0.0",
+                "@ethereumjs/common": "^3.0.0",
+                "@ethereumjs/ethash": "^2.0.0",
+                "@ethereumjs/rlp": "^4.0.0",
+                "@ethereumjs/trie": "^5.0.0",
+                "@ethereumjs/util": "^8.0.0",
                 "abstract-level": "^1.0.3",
                 "debug": "^4.3.3",
-                "ethereum-cryptography": "^2.0.0",
+                "ethereum-cryptography": "^1.1.2",
                 "level": "^8.0.0",
                 "lru-cache": "^5.1.1",
                 "memory-level": "^1.0.0"
@@ -1649,11 +1648,11 @@
             }
         },
         "node_modules/@ethereumjs/common": {
-            "version": "3.2.0",
-            "resolved": "https://registry.npmjs.org/@ethereumjs/common/-/common-3.2.0.tgz",
-            "integrity": "sha512-pksvzI0VyLgmuEF2FA/JR/4/y6hcPq8OUail3/AvycBaW1d5VSauOZzqGvJ3RTmR4MU35lWE8KseKOsEhrFRBA==",
+            "version": "3.0.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/common/-/common-3.0.0.tgz",
+            "integrity": "sha512-yHgMom5HFlAJIu8fmA1n0UvBnanhULfuNQAD+tT6ZR6sndLUz2Mc4eegF3Rby579lqJMAc/rpsToP7wA/i4R/w==",
             "dependencies": {
-                "@ethereumjs/util": "^8.1.0",
+                "@ethereumjs/util": "^8.0.0",
                 "crc-32": "^1.2.0"
             }
         },
@@ -1673,6 +1672,110 @@
                 "node": ">=14"
             }
         },
+        "node_modules/@ethereumjs/ethash/node_modules/@ethereumjs/block": {
+            "version": "4.3.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/block/-/block-4.3.0.tgz",
+            "integrity": "sha512-NHzfNIqadldAB91LjkHOaQgMNA/Pc7C1N9NAm/QpewW6D0B9bSIYYnxwmv3EUyd/sbfBEheLFpwrBpvkCN+iAA==",
+            "dependencies": {
+                "@ethereumjs/common": "^3.2.0",
+                "@ethereumjs/rlp": "^4.0.1",
+                "@ethereumjs/trie": "^5.1.0",
+                "@ethereumjs/tx": "^4.2.0",
+                "@ethereumjs/util": "^8.1.0",
+                "ethereum-cryptography": "^2.0.0"
+            },
+            "engines": {
+                "node": ">=14"
+            }
+        },
+        "node_modules/@ethereumjs/ethash/node_modules/@ethereumjs/common": {
+            "version": "3.2.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/common/-/common-3.2.0.tgz",
+            "integrity": "sha512-pksvzI0VyLgmuEF2FA/JR/4/y6hcPq8OUail3/AvycBaW1d5VSauOZzqGvJ3RTmR4MU35lWE8KseKOsEhrFRBA==",
+            "dependencies": {
+                "@ethereumjs/util": "^8.1.0",
+                "crc-32": "^1.2.0"
+            }
+        },
+        "node_modules/@ethereumjs/ethash/node_modules/@ethereumjs/trie": {
+            "version": "5.1.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/trie/-/trie-5.1.0.tgz",
+            "integrity": "sha512-OVaHuZUx1ao+VmYYg63kzmMgPqwFHPdDTP3hqp5Jh4QGWdhY5ddIMVhXBZRTxqEnDZkUmBA21yyAxdmI8YaBzA==",
+            "dependencies": {
+                "@ethereumjs/rlp": "^4.0.1",
+                "@ethereumjs/util": "^8.1.0",
+                "@types/readable-stream": "^2.3.13",
+                "ethereum-cryptography": "^2.0.0",
+                "readable-stream": "^3.6.0"
+            },
+            "engines": {
+                "node": ">=14"
+            }
+        },
+        "node_modules/@ethereumjs/ethash/node_modules/@ethereumjs/tx": {
+            "version": "4.2.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/tx/-/tx-4.2.0.tgz",
+            "integrity": "sha512-1nc6VO4jtFd172BbSnTnDQVr9IYBFl1y4xPzZdtkrkKIncBCkdbgfdRV+MiTkJYAtTxvV12GRZLqBFT1PNK6Yw==",
+            "dependencies": {
+                "@ethereumjs/common": "^3.2.0",
+                "@ethereumjs/rlp": "^4.0.1",
+                "@ethereumjs/util": "^8.1.0",
+                "ethereum-cryptography": "^2.0.0"
+            },
+            "engines": {
+                "node": ">=14"
+            }
+        },
+        "node_modules/@ethereumjs/ethash/node_modules/@ethereumjs/util": {
+            "version": "8.1.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/util/-/util-8.1.0.tgz",
+            "integrity": "sha512-zQ0IqbdX8FZ9aw11vP+dZkKDkS+kgIvQPHnSAXzP9pLu+Rfu3D3XEeLbicvoXJTYnhZiPmsZUxgdzXwNKxRPbA==",
+            "dependencies": {
+                "@ethereumjs/rlp": "^4.0.1",
+                "ethereum-cryptography": "^2.0.0",
+                "micro-ftch": "^0.3.1"
+            },
+            "engines": {
+                "node": ">=14"
+            }
+        },
+        "node_modules/@ethereumjs/ethash/node_modules/@scure/bip32": {
+            "version": "1.3.1",
+            "resolved": "https://registry.npmjs.org/@scure/bip32/-/bip32-1.3.1.tgz",
+            "integrity": "sha512-osvveYtyzdEVbt3OfwwXFr4P2iVBL5u1Q3q4ONBfDY/UpOuXmOlbgwc1xECEboY8wIays8Yt6onaWMUdUbfl0A==",
+            "dependencies": {
+                "@noble/curves": "~1.1.0",
+                "@noble/hashes": "~1.3.1",
+                "@scure/base": "~1.1.0"
+            },
+            "funding": {
+                "url": "https://paulmillr.com/funding/"
+            }
+        },
+        "node_modules/@ethereumjs/ethash/node_modules/ethereum-cryptography": {
+            "version": "2.1.0",
+            "resolved": "https://registry.npmjs.org/ethereum-cryptography/-/ethereum-cryptography-2.1.0.tgz",
+            "integrity": "sha512-QX4uRmoGJdxDPsncrOaeVCC7JOOvMzUXkvo9Xasv2EKV5RwZgZxQ9s5yEbWSB1MSeso362hWWRPV/FYKNLditw==",
+            "dependencies": {
+                "@noble/curves": "1.1.0",
+                "@noble/hashes": "1.3.1",
+                "@scure/bip32": "1.3.1",
+                "@scure/bip39": "1.2.1"
+            }
+        },
+        "node_modules/@ethereumjs/ethash/node_modules/readable-stream": {
+            "version": "3.6.2",
+            "resolved": "https://registry.npmjs.org/readable-stream/-/readable-stream-3.6.2.tgz",
+            "integrity": "sha512-9u/sniCrY3D5WdsERHzHE4G2YCXqoG5FTHUiCC4SIbr6XcLZBY05ya9EKjYek9O5xOAwjGq+1JdGBAS7Q9ScoA==",
+            "dependencies": {
+                "inherits": "^2.0.3",
+                "string_decoder": "^1.1.1",
+                "util-deprecate": "^1.0.1"
+            },
+            "engines": {
+                "node": ">= 6"
+            }
+        },
         "node_modules/@ethereumjs/evm": {
             "version": "1.4.0",
             "resolved": "https://registry.npmjs.org/@ethereumjs/evm/-/evm-1.4.0.tgz",
@@ -1689,6 +1792,66 @@
             },
             "engines": {
                 "node": ">=14"
+            }
+        },
+        "node_modules/@ethereumjs/evm/node_modules/@ethereumjs/common": {
+            "version": "3.2.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/common/-/common-3.2.0.tgz",
+            "integrity": "sha512-pksvzI0VyLgmuEF2FA/JR/4/y6hcPq8OUail3/AvycBaW1d5VSauOZzqGvJ3RTmR4MU35lWE8KseKOsEhrFRBA==",
+            "dependencies": {
+                "@ethereumjs/util": "^8.1.0",
+                "crc-32": "^1.2.0"
+            }
+        },
+        "node_modules/@ethereumjs/evm/node_modules/@ethereumjs/tx": {
+            "version": "4.2.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/tx/-/tx-4.2.0.tgz",
+            "integrity": "sha512-1nc6VO4jtFd172BbSnTnDQVr9IYBFl1y4xPzZdtkrkKIncBCkdbgfdRV+MiTkJYAtTxvV12GRZLqBFT1PNK6Yw==",
+            "dependencies": {
+                "@ethereumjs/common": "^3.2.0",
+                "@ethereumjs/rlp": "^4.0.1",
+                "@ethereumjs/util": "^8.1.0",
+                "ethereum-cryptography": "^2.0.0"
+            },
+            "engines": {
+                "node": ">=14"
+            }
+        },
+        "node_modules/@ethereumjs/evm/node_modules/@ethereumjs/util": {
+            "version": "8.1.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/util/-/util-8.1.0.tgz",
+            "integrity": "sha512-zQ0IqbdX8FZ9aw11vP+dZkKDkS+kgIvQPHnSAXzP9pLu+Rfu3D3XEeLbicvoXJTYnhZiPmsZUxgdzXwNKxRPbA==",
+            "dependencies": {
+                "@ethereumjs/rlp": "^4.0.1",
+                "ethereum-cryptography": "^2.0.0",
+                "micro-ftch": "^0.3.1"
+            },
+            "engines": {
+                "node": ">=14"
+            }
+        },
+        "node_modules/@ethereumjs/evm/node_modules/@scure/bip32": {
+            "version": "1.3.1",
+            "resolved": "https://registry.npmjs.org/@scure/bip32/-/bip32-1.3.1.tgz",
+            "integrity": "sha512-osvveYtyzdEVbt3OfwwXFr4P2iVBL5u1Q3q4ONBfDY/UpOuXmOlbgwc1xECEboY8wIays8Yt6onaWMUdUbfl0A==",
+            "dependencies": {
+                "@noble/curves": "~1.1.0",
+                "@noble/hashes": "~1.3.1",
+                "@scure/base": "~1.1.0"
+            },
+            "funding": {
+                "url": "https://paulmillr.com/funding/"
+            }
+        },
+        "node_modules/@ethereumjs/evm/node_modules/ethereum-cryptography": {
+            "version": "2.1.0",
+            "resolved": "https://registry.npmjs.org/ethereum-cryptography/-/ethereum-cryptography-2.1.0.tgz",
+            "integrity": "sha512-QX4uRmoGJdxDPsncrOaeVCC7JOOvMzUXkvo9Xasv2EKV5RwZgZxQ9s5yEbWSB1MSeso362hWWRPV/FYKNLditw==",
+            "dependencies": {
+                "@noble/curves": "1.1.0",
+                "@noble/hashes": "1.3.1",
+                "@scure/bip32": "1.3.1",
+                "@scure/bip39": "1.2.1"
             }
         },
         "node_modules/@ethereumjs/rlp": {
@@ -1715,15 +1878,60 @@
                 "js-sdsl": "^4.1.4"
             }
         },
-        "node_modules/@ethereumjs/trie": {
-            "version": "5.1.0",
-            "resolved": "https://registry.npmjs.org/@ethereumjs/trie/-/trie-5.1.0.tgz",
-            "integrity": "sha512-OVaHuZUx1ao+VmYYg63kzmMgPqwFHPdDTP3hqp5Jh4QGWdhY5ddIMVhXBZRTxqEnDZkUmBA21yyAxdmI8YaBzA==",
+        "node_modules/@ethereumjs/statemanager/node_modules/@ethereumjs/common": {
+            "version": "3.2.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/common/-/common-3.2.0.tgz",
+            "integrity": "sha512-pksvzI0VyLgmuEF2FA/JR/4/y6hcPq8OUail3/AvycBaW1d5VSauOZzqGvJ3RTmR4MU35lWE8KseKOsEhrFRBA==",
+            "dependencies": {
+                "@ethereumjs/util": "^8.1.0",
+                "crc-32": "^1.2.0"
+            }
+        },
+        "node_modules/@ethereumjs/statemanager/node_modules/@ethereumjs/util": {
+            "version": "8.1.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/util/-/util-8.1.0.tgz",
+            "integrity": "sha512-zQ0IqbdX8FZ9aw11vP+dZkKDkS+kgIvQPHnSAXzP9pLu+Rfu3D3XEeLbicvoXJTYnhZiPmsZUxgdzXwNKxRPbA==",
             "dependencies": {
                 "@ethereumjs/rlp": "^4.0.1",
-                "@ethereumjs/util": "^8.1.0",
-                "@types/readable-stream": "^2.3.13",
                 "ethereum-cryptography": "^2.0.0",
+                "micro-ftch": "^0.3.1"
+            },
+            "engines": {
+                "node": ">=14"
+            }
+        },
+        "node_modules/@ethereumjs/statemanager/node_modules/@scure/bip32": {
+            "version": "1.3.1",
+            "resolved": "https://registry.npmjs.org/@scure/bip32/-/bip32-1.3.1.tgz",
+            "integrity": "sha512-osvveYtyzdEVbt3OfwwXFr4P2iVBL5u1Q3q4ONBfDY/UpOuXmOlbgwc1xECEboY8wIays8Yt6onaWMUdUbfl0A==",
+            "dependencies": {
+                "@noble/curves": "~1.1.0",
+                "@noble/hashes": "~1.3.1",
+                "@scure/base": "~1.1.0"
+            },
+            "funding": {
+                "url": "https://paulmillr.com/funding/"
+            }
+        },
+        "node_modules/@ethereumjs/statemanager/node_modules/ethereum-cryptography": {
+            "version": "2.1.0",
+            "resolved": "https://registry.npmjs.org/ethereum-cryptography/-/ethereum-cryptography-2.1.0.tgz",
+            "integrity": "sha512-QX4uRmoGJdxDPsncrOaeVCC7JOOvMzUXkvo9Xasv2EKV5RwZgZxQ9s5yEbWSB1MSeso362hWWRPV/FYKNLditw==",
+            "dependencies": {
+                "@noble/curves": "1.1.0",
+                "@noble/hashes": "1.3.1",
+                "@scure/bip32": "1.3.1",
+                "@scure/bip39": "1.2.1"
+            }
+        },
+        "node_modules/@ethereumjs/trie": {
+            "version": "5.0.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/trie/-/trie-5.0.0.tgz",
+            "integrity": "sha512-BiFv9hQZighlp4445kfG65X+tc8eEfpP32RMKzCELmSvChpwmtuL8Xuxy+aTYWQEMjY6s4gAVLX/J48SW7gwQg==",
+            "dependencies": {
+                "@ethereumjs/rlp": "^4.0.0",
+                "@ethereumjs/util": "^8.0.0",
+                "ethereum-cryptography": "^1.1.2",
                 "readable-stream": "^3.6.0"
             },
             "engines": {
@@ -1744,48 +1952,50 @@
             }
         },
         "node_modules/@ethereumjs/tx": {
-            "version": "4.2.0",
-            "resolved": "https://registry.npmjs.org/@ethereumjs/tx/-/tx-4.2.0.tgz",
-            "integrity": "sha512-1nc6VO4jtFd172BbSnTnDQVr9IYBFl1y4xPzZdtkrkKIncBCkdbgfdRV+MiTkJYAtTxvV12GRZLqBFT1PNK6Yw==",
+            "version": "4.0.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/tx/-/tx-4.0.0.tgz",
+            "integrity": "sha512-W3Fc61kAA3D6vJad2vsfh9ygdaMeScYpf49ephoo/0y+CP9IN+MMrqA6mx1X0Fr/jf52IuW4hDHE/rmgadBV6g==",
             "dependencies": {
-                "@ethereumjs/common": "^3.2.0",
-                "@ethereumjs/rlp": "^4.0.1",
-                "@ethereumjs/util": "^8.1.0",
-                "ethereum-cryptography": "^2.0.0"
+                "@ethereumjs/common": "^3.0.0",
+                "@ethereumjs/rlp": "^4.0.0",
+                "@ethereumjs/util": "^8.0.0",
+                "ethereum-cryptography": "^1.1.2"
             },
             "engines": {
                 "node": ">=14"
             }
         },
         "node_modules/@ethereumjs/util": {
-            "version": "8.1.0",
-            "resolved": "https://registry.npmjs.org/@ethereumjs/util/-/util-8.1.0.tgz",
-            "integrity": "sha512-zQ0IqbdX8FZ9aw11vP+dZkKDkS+kgIvQPHnSAXzP9pLu+Rfu3D3XEeLbicvoXJTYnhZiPmsZUxgdzXwNKxRPbA==",
+            "version": "8.0.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/util/-/util-8.0.0.tgz",
+            "integrity": "sha512-Zz/Ovar0VU/CaYHLvigBTjG5PmkG0OzjvRjjoXRJbJcdWJoTCN2N4BYgoCBOZomKjaAT4ABpQ7wer6ZFOglvjg==",
             "dependencies": {
-                "@ethereumjs/rlp": "^4.0.1",
-                "ethereum-cryptography": "^2.0.0",
-                "micro-ftch": "^0.3.1"
+                "@ethereumjs/rlp": "^4.0.0-beta.2",
+                "ethereum-cryptography": "^1.1.2"
             },
             "engines": {
                 "node": ">=14"
             }
         },
         "node_modules/@ethereumjs/vm": {
-            "version": "6.5.0",
-            "resolved": "https://registry.npmjs.org/@ethereumjs/vm/-/vm-6.5.0.tgz",
-            "integrity": "sha512-/i9dnF3Gw+l/47k/YgY/ba2p6lg2WY3YCkIVx0aoF71fC9nULfkQfJrTYlcn3FBiBFEjacI3p/N1F3hW7YcyzA==",
+            "version": "6.0.0",
+            "resolved": "https://registry.npmjs.org/@ethereumjs/vm/-/vm-6.0.0.tgz",
+            "integrity": "sha512-bFt9RSe+HKT+lgpL4+pHEWjn6l3N4f82cfFkSHaF4RTgSHeyGq/K4lbyXOFGE+r7QAwXM5SrRR1+g7kLhp0h7w==",
             "dependencies": {
-                "@ethereumjs/block": "^4.3.0",
-                "@ethereumjs/blockchain": "^6.3.0",
-                "@ethereumjs/common": "^3.2.0",
-                "@ethereumjs/evm": "^1.4.0",
-                "@ethereumjs/rlp": "^4.0.1",
-                "@ethereumjs/statemanager": "^1.1.0",
-                "@ethereumjs/trie": "^5.1.0",
-                "@ethereumjs/tx": "^4.2.0",
-                "@ethereumjs/util": "^8.1.0",
+                "@ethereumjs/block": "^4.0.0",
+                "@ethereumjs/blockchain": "^6.0.0",
+                "@ethereumjs/common": "^3.0.0",
+                "@ethereumjs/evm": "^1.0.0",
+                "@ethereumjs/rlp": "^4.0.0",
+                "@ethereumjs/statemanager": "^1.0.0",
+                "@ethereumjs/trie": "^5.0.0",
+                "@ethereumjs/tx": "^4.0.0",
+                "@ethereumjs/util": "^8.0.0",
+                "@types/async-eventemitter": "^0.2.1",
+                "async-eventemitter": "^0.2.4",
                 "debug": "^4.3.3",
-                "ethereum-cryptography": "^2.0.0",
+                "ethereum-cryptography": "^1.1.2",
+                "functional-red-black-tree": "^1.0.1",
                 "mcl-wasm": "^0.7.1",
                 "rustbn.js": "~0.2.0"
             },
@@ -3235,29 +3445,15 @@
             }
         },
         "node_modules/@noble/curves": {
-            "version": "1.0.0",
-            "resolved": "https://registry.npmjs.org/@noble/curves/-/curves-1.0.0.tgz",
-            "integrity": "sha512-2upgEu0iLiDVDZkNLeFV2+ht0BAVgQnEmCk6JsOch9Rp8xfkMCbvbAZlA2pBHQc73dbl+vFOXfqkf4uemdn0bw==",
-            "funding": [
-                {
-                    "type": "individual",
-                    "url": "https://paulmillr.com/funding/"
-                }
-            ],
+            "version": "1.1.0",
+            "resolved": "https://registry.npmjs.org/@noble/curves/-/curves-1.1.0.tgz",
+            "integrity": "sha512-091oBExgENk/kGj3AZmtBDMpxQPDtxQABR2B9lb1JbVTs6ytdzZNwvhxQ4MWasRNEzlbEH8jCWFCwhF/Obj5AA==",
             "dependencies": {
-                "@noble/hashes": "1.3.0"
+                "@noble/hashes": "1.3.1"
+            },
+            "funding": {
+                "url": "https://paulmillr.com/funding/"
             }
-        },
-        "node_modules/@noble/curves/node_modules/@noble/hashes": {
-            "version": "1.3.0",
-            "resolved": "https://registry.npmjs.org/@noble/hashes/-/hashes-1.3.0.tgz",
-            "integrity": "sha512-ilHEACi9DwqJB0pw7kv+Apvh50jiiSyR/cQ3y4W7lOR5mhvn/50FLUfsnfJz0BDZtl/RR16kXvptiv6q1msYZg==",
-            "funding": [
-                {
-                    "type": "individual",
-                    "url": "https://paulmillr.com/funding/"
-                }
-            ]
         },
         "node_modules/@noble/hashes": {
             "version": "1.3.1",
@@ -3269,6 +3465,17 @@
             "funding": {
                 "url": "https://paulmillr.com/funding/"
             }
+        },
+        "node_modules/@noble/secp256k1": {
+            "version": "1.7.1",
+            "resolved": "https://registry.npmjs.org/@noble/secp256k1/-/secp256k1-1.7.1.tgz",
+            "integrity": "sha512-hOUk6AyBFmqVrv7k5WAw/LpszxVbj9gGN4JRkIX52fdFAj1UA61KXmZDvqVEm+pOyec3+fIeZB02LYa/pWOArw==",
+            "funding": [
+                {
+                    "type": "individual",
+                    "url": "https://paulmillr.com/funding/"
+                }
+            ]
         },
         "node_modules/@nodelib/fs.scandir": {
             "version": "2.1.5",
@@ -3975,9 +4182,9 @@
             ]
         },
         "node_modules/@scure/bip32": {
-            "version": "1.3.0",
-            "resolved": "https://registry.npmjs.org/@scure/bip32/-/bip32-1.3.0.tgz",
-            "integrity": "sha512-bcKpo1oj54hGholplGLpqPHRbIsnbixFtc06nwuNM5/dwSXOq/AAYoIBRsBmnZJSdfeNW5rnff7NTAz3ZCqR9Q==",
+            "version": "1.1.5",
+            "resolved": "https://registry.npmjs.org/@scure/bip32/-/bip32-1.1.5.tgz",
+            "integrity": "sha512-XyNh1rB0SkEqd3tXcXMi+Xe1fvg+kUIcoRIEujP1Jgv7DqW2r9lg3Ah0NkFaCs9sTkQAQA8kw7xiRXzENi9Rtw==",
             "funding": [
                 {
                     "type": "individual",
@@ -3985,10 +4192,21 @@
                 }
             ],
             "dependencies": {
-                "@noble/curves": "~1.0.0",
-                "@noble/hashes": "~1.3.0",
+                "@noble/hashes": "~1.2.0",
+                "@noble/secp256k1": "~1.7.0",
                 "@scure/base": "~1.1.0"
             }
+        },
+        "node_modules/@scure/bip32/node_modules/@noble/hashes": {
+            "version": "1.2.0",
+            "resolved": "https://registry.npmjs.org/@noble/hashes/-/hashes-1.2.0.tgz",
+            "integrity": "sha512-FZfhjEDbT5GRswV3C6uvLPHMiVD6lQBmpoX5+eSiPaMTXte/IKqI5dykDxzZB/WBeK/CDuQRBWarPdi3FNY2zQ==",
+            "funding": [
+                {
+                    "type": "individual",
+                    "url": "https://paulmillr.com/funding/"
+                }
+            ]
         },
         "node_modules/@scure/bip39": {
             "version": "1.2.1",
@@ -4738,6 +4956,11 @@
             "funding": {
                 "url": "https://github.com/sponsors/isaacs"
             }
+        },
+        "node_modules/@types/async-eventemitter": {
+            "version": "0.2.1",
+            "resolved": "https://registry.npmjs.org/@types/async-eventemitter/-/async-eventemitter-0.2.1.tgz",
+            "integrity": "sha512-M2P4Ng26QbAeITiH7w1d7OxtldgfAe0wobpyJzVK/XOb0cUGKU2R4pfAhqcJBXAe2ife5ZOhSv4wk7p+ffURtg=="
         },
         "node_modules/@types/babel__core": {
             "version": "7.20.1",
@@ -5504,6 +5727,22 @@
             "version": "3.2.4",
             "resolved": "https://registry.npmjs.org/async/-/async-3.2.4.tgz",
             "integrity": "sha512-iAB+JbDEGXhyIUavoDl9WP/Jj106Kz9DEn1DPgYw5ruDn0e3Wgi3sKFm55sASdGBNOQB8F59d9qQ7deqrHA8wQ=="
+        },
+        "node_modules/async-eventemitter": {
+            "version": "0.2.4",
+            "resolved": "https://registry.npmjs.org/async-eventemitter/-/async-eventemitter-0.2.4.tgz",
+            "integrity": "sha512-pd20BwL7Yt1zwDFy+8MX8F1+WCT8aQeKj0kQnTrH9WaeRETlRamVhD0JtRPmrV4GfOJ2F9CvdQkZeZhnh2TuHw==",
+            "dependencies": {
+                "async": "^2.4.0"
+            }
+        },
+        "node_modules/async-eventemitter/node_modules/async": {
+            "version": "2.6.4",
+            "resolved": "https://registry.npmjs.org/async/-/async-2.6.4.tgz",
+            "integrity": "sha512-mzo5dfJYwAn29PeiJ0zvwTo04zj8HDJj0Mn8TD7sno7q12prdbnasKJHhkm2c1LgrhlJ0teaea8860oxi51mGA==",
+            "dependencies": {
+                "lodash": "^4.17.14"
+            }
         },
         "node_modules/async-mutex": {
             "version": "0.4.0",
@@ -8632,20 +8871,20 @@
             }
         },
         "node_modules/ethereum-cryptography": {
-            "version": "2.0.0",
-            "resolved": "https://registry.npmjs.org/ethereum-cryptography/-/ethereum-cryptography-2.0.0.tgz",
-            "integrity": "sha512-g25m4EtfQGjstWgVE1aIz7XYYjf3kH5kG17ULWVB5dH6uLahsoltOhACzSxyDV+fhn4gbR4xRrOXGe6r2uh4Bg==",
+            "version": "1.2.0",
+            "resolved": "https://registry.npmjs.org/ethereum-cryptography/-/ethereum-cryptography-1.2.0.tgz",
+            "integrity": "sha512-6yFQC9b5ug6/17CQpCyE3k9eKBMdhyVjzUy1WkiuY/E4vj/SXDBbCw8QEIaXqf0Mf2SnY6RmpDcwlUmBSS0EJw==",
             "dependencies": {
-                "@noble/curves": "1.0.0",
-                "@noble/hashes": "1.3.0",
-                "@scure/bip32": "1.3.0",
-                "@scure/bip39": "1.2.0"
+                "@noble/hashes": "1.2.0",
+                "@noble/secp256k1": "1.7.1",
+                "@scure/bip32": "1.1.5",
+                "@scure/bip39": "1.1.1"
             }
         },
         "node_modules/ethereum-cryptography/node_modules/@noble/hashes": {
-            "version": "1.3.0",
-            "resolved": "https://registry.npmjs.org/@noble/hashes/-/hashes-1.3.0.tgz",
-            "integrity": "sha512-ilHEACi9DwqJB0pw7kv+Apvh50jiiSyR/cQ3y4W7lOR5mhvn/50FLUfsnfJz0BDZtl/RR16kXvptiv6q1msYZg==",
+            "version": "1.2.0",
+            "resolved": "https://registry.npmjs.org/@noble/hashes/-/hashes-1.2.0.tgz",
+            "integrity": "sha512-FZfhjEDbT5GRswV3C6uvLPHMiVD6lQBmpoX5+eSiPaMTXte/IKqI5dykDxzZB/WBeK/CDuQRBWarPdi3FNY2zQ==",
             "funding": [
                 {
                     "type": "individual",
@@ -8654,9 +8893,9 @@
             ]
         },
         "node_modules/ethereum-cryptography/node_modules/@scure/bip39": {
-            "version": "1.2.0",
-            "resolved": "https://registry.npmjs.org/@scure/bip39/-/bip39-1.2.0.tgz",
-            "integrity": "sha512-SX/uKq52cuxm4YFXWFaVByaSHJh2w3BnokVSeUJVCv6K7WulT9u2BuNRBhuFl8vAuYnzx9bEu9WgpcNYTrYieg==",
+            "version": "1.1.1",
+            "resolved": "https://registry.npmjs.org/@scure/bip39/-/bip39-1.1.1.tgz",
+            "integrity": "sha512-t+wDck2rVkh65Hmv280fYdVdY25J9YeEUIgn2LG1WM6gxFkGzcksoDiUkWVpVp3Oex9xGC68JU2dSbUfwZ2jPg==",
             "funding": [
                 {
                     "type": "individual",
@@ -8664,7 +8903,7 @@
                 }
             ],
             "dependencies": {
-                "@noble/hashes": "~1.3.0",
+                "@noble/hashes": "~1.2.0",
                 "@scure/base": "~1.1.0"
             }
         },
@@ -12085,8 +12324,7 @@
         "node_modules/lodash": {
             "version": "4.17.21",
             "resolved": "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz",
-            "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==",
-            "dev": true
+            "integrity": "sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg=="
         },
         "node_modules/lodash-es": {
             "version": "4.17.21",
