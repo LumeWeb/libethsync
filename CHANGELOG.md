@@ -1,3 +1,10 @@
+# [0.1.0-develop.23](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.22...v0.1.0-develop.23) (2023-07-11)
+
+
+### Reverts
+
+* Revert "fix: ensure @ethereumjs/util matches the version required by @ethereumjs/evm" ([bad87ac](https://git.lumeweb.com/LumeWeb/libethsync/commit/bad87ac7e101cd8106b3b60901e9a60adebd6848))
+
 # [0.1.0-develop.22](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.21...v0.1.0-develop.22) (2023-07-11)
 
 
