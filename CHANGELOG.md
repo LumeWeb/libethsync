@@ -1,3 +1,10 @@
+# [0.1.0-develop.12](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.11...v0.1.0-develop.12) (2023-07-11)
+
+
+### Bug Fixes
+
+* fix usage of deserializeSyncCommittee ([80fdc45](https://git.lumeweb.com/LumeWeb/libethsync/commit/80fdc45ccd3993e96a57849bd3acae75cf46eb76))
+
 # [0.1.0-develop.11](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.10...v0.1.0-develop.11) (2023-07-11)
 
 
