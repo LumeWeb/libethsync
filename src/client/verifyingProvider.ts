@@ -48,7 +48,11 @@ import { keccak256 } from "ethereum-cryptography/keccak";
 import { fromHexString } from "@chainsafe/ssz";
 import { RPC } from "#client/rpc.js";
 
-export default class VerifyingProvider implements IVerifyingProvider {
+export interface IClientVerifyingProvider extends IVerifyingProvider {
+  rpcMethod(method: string, params: any);
+}
+
+export default class VerifyingProvider implements IClientVerifyingProvider {
   common: Common;
   vm: VM | null = null;
   private blockHashes: { [blockNumberHex: string]: Bytes32 } = {};

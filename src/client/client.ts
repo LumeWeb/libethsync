@@ -13,10 +13,11 @@ import {
   optimisticUpdateVerify,
 } from "#util.js";
 import { equalBytes } from "@noble/curves/abstract/utils.js";
+import { IClientVerifyingProvider } from "#client/verifyingProvider.js";
 
 interface Config extends BaseClientOptions {
   prover: IClientProver;
-  provider: IVerifyingProviderConstructor;
+  provider: IVerifyingProviderConstructor<IClientVerifyingProvider>;
   rpcHandler: Function;
 }
 
@@ -27,16 +28,12 @@ export default class Client extends BaseClient {
     super(options);
   }
 
-  private _provider?: IVerifyingProvider;
-
-  get provider(): IVerifyingProvider {
-    return this._provider as IVerifyingProvider;
-  }
+  private provider?: IClientVerifyingProvider;
 
   async sync(): Promise<void> {
     await super.sync();
 
-    if (!this._provider) {
+    if (!this.provider) {
       const { blockHash, blockNumber } = await this.getNextValidExecutionInfo();
       const factory = this.options.provider;
       const provider = new factory(
@@ -51,7 +48,7 @@ export default class Client extends BaseClient {
         provider.update(ei.blockNumber, ei.blockHash);
       });
 
-      this._provider = provider;
+      this.provider = provider;
       this.booted = true;
     }
   }
@@ -122,5 +119,9 @@ export default class Client extends BaseClient {
     }
 
     return committee;
+  }
+
+  public async rpcCall(method: string, params: any) {
+    return this.provider?.rpcMethod(method, params);
   }
 }
