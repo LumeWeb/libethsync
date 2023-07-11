@@ -1,3 +1,10 @@
+# [0.1.0-develop.18](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.17...v0.1.0-develop.18) (2023-07-11)
+
+
+### Bug Fixes
+
+* update ProverRequestCallback type to return a promise ([0884030](https://git.lumeweb.com/LumeWeb/libethsync/commit/08840308f8f0eb3560bbac4855222c8b4af46887))
+
 # [0.1.0-develop.17](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.16...v0.1.0-develop.17) (2023-07-11)
 
 
