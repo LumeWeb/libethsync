@@ -1,3 +1,10 @@
+# [0.1.0-develop.5](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.4...v0.1.0-develop.5) (2023-07-11)
+
+
+### Bug Fixes
+
+* add missing methods to IStore interface ([52aca21](https://git.lumeweb.com/LumeWeb/libethsync/commit/52aca21b781160055b57ec983edd1ed8e9c0e3e4))
+
 # [0.1.0-develop.4](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.3...v0.1.0-develop.4) (2023-07-11)
 
 
