@@ -28,6 +28,11 @@ interface Config extends BaseClientOptions {
 }
 
 export default class Client extends BaseClient {
+  async sync(): Promise<void> {
+    await super.sync();
+
+    this.subscribe();
+  }
   private beaconUrl: string;
   private blockCache = new NodeCache({ stdTTL: 60 * 60 * 12 });
   private blockHashCache = new NodeCache({ stdTTL: 60 * 60 * 12 });

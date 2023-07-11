@@ -85,6 +85,21 @@ export default abstract class BaseClient {
     this.syncMutex.release();
   }
 
+  protected async subscribe(callback?: (ei: ExecutionInfo) => void) {
+    setInterval(async () => {
+      try {
+        await this._sync();
+        const ei = await this.getLatestExecution();
+        if (ei && ei.blockHash !== this.latestBlockHash) {
+          this.latestBlockHash = ei.blockHash;
+          return await callback?.(ei);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }, POLLING_DELAY);
+  }
+
   public get store(): IStore {
     return this.options.store as IStore;
   }
