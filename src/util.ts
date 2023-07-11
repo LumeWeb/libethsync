@@ -30,6 +30,7 @@ export function getDefaultClientConfig() {
 export function optimisticUpdateFromJSON(update: any): OptimisticUpdate {
   return capella.ssz.LightClientOptimisticUpdate.fromJson(update);
 }
+
 export async function optimisticUpdateVerify(
   committee: Uint8Array[],
   update: OptimisticUpdate,
@@ -49,7 +50,7 @@ export async function optimisticUpdateVerify(
 
     try {
       assertValidSignedHeader(
-        this.config.chainConfig,
+        getDefaultClientConfig().chainConfig,
         committeeFast,
         syncAggregate,
         headerBlockRoot,
@@ -75,6 +76,7 @@ export async function optimisticUpdateVerify(
     return { correct: false, reason: (e as Error).message };
   }
 }
+
 export function deserializePubkeys(pubkeys) {
   return pubkeys.map((pk) => bls.PublicKey.fromBytes(pk));
 }
