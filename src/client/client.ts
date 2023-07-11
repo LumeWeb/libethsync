@@ -16,7 +16,6 @@ import { equalBytes } from "@noble/curves/abstract/utils.js";
 
 interface Config extends BaseClientOptions {
   prover: IClientProver;
-  beaconUrl: string;
   provider: IVerifyingProviderConstructor;
   rpcHandler: Function;
 }
