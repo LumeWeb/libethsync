@@ -1,3 +1,10 @@
+# [0.1.0-develop.17](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.16...v0.1.0-develop.17) (2023-07-11)
+
+
+### Bug Fixes
+
+* beacon url is not used on the client side ([f353b3e](https://git.lumeweb.com/LumeWeb/libethsync/commit/f353b3e102438fa5d0af434519e3cd1927b85d75))
+
 # [0.1.0-develop.16](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.15...v0.1.0-develop.16) (2023-07-11)
 
 
