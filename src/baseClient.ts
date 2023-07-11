@@ -44,7 +44,7 @@ export default abstract class BaseClient {
   }
 
   public async sync(): Promise<void> {
-    await init(isNode ? "blst-native" : "herumi");
+    await init("herumi");
 
     await this._sync();
   }
