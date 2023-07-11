@@ -1,11 +1,6 @@
 import BaseClient, { BaseClientOptions } from "#baseClient.js";
-import {
-  ExecutionInfo,
-  IStore,
-  IVerifyingProvider,
-  IVerifyingProviderConstructor,
-} from "#interfaces.js";
-import { DEFAULT_BATCH_SIZE, POLLING_DELAY } from "#constants.js";
+import { ExecutionInfo, IVerifyingProviderConstructor } from "#interfaces.js";
+import { DEFAULT_BATCH_SIZE } from "#constants.js";
 import { IClientProver } from "#client/prover.js";
 import {
   getCommitteeHash,
