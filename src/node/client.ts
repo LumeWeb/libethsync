@@ -107,10 +107,11 @@ export default class Client extends BaseClient {
       console.error(`Invalid Optimistic Update: ${verify?.reason}`);
       return null;
     }
-    return this.getExecutionFromBlockRoot(
-      updateJSON.data.attested_header.beacon.slot,
-      updateJSON.data.attested_header.beacon.body_root,
-    );
+
+    return {
+      blockHash: toHexString(update.attestedHeader.execution.blockHash),
+      blockNumber: update.attestedHeader.execution.blockNumber,
+    };
   }
 
   protected async syncFromGenesis(): Promise<Uint8Array[]> {
@@ -176,34 +177,5 @@ export default class Client extends BaseClient {
       console.error(e);
       return false;
     }
-  }
-
-  private async getExecutionFromBlockRoot(
-    slot: bigint,
-    expectedBlockRoot: Bytes32,
-  ): Promise<ExecutionInfo> {
-    const res = await axios.get(`/eth/v2/beacon/blocks/${slot}`);
-
-    if (!res.data) {
-      throw Error(`fetching block failed`);
-    }
-
-    const block = capella.ssz.BeaconBlock.fromJson(res.data.message);
-    const blockRoot = toHexString(
-      capella.ssz.BeaconBlockBody.hashTreeRoot(block.body),
-    );
-    if (blockRoot !== expectedBlockRoot) {
-      throw Error(
-        `block provided by the beacon chain api doesn't match the expected block root`,
-      );
-    }
-
-    this.blockCache.set<any>(Number(slot), block);
-    this.blockHashCache.set<Bytes32>(Number(slot), expectedBlockRoot);
-
-    return {
-      blockHash: toHexString(block.body.executionPayload.blockHash),
-      blockNumber: block.body.executionPayload.blockNumber,
-    };
   }
 }
