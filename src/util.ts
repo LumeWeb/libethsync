@@ -9,6 +9,7 @@ import axiosRetry from "axios-retry";
 import axios from "axios";
 import { digest } from "@chainsafe/as-sha256";
 import { concatBytes } from "@noble/hashes/utils";
+import { deserializeSyncCommittee } from "@lodestar/light-client/utils";
 
 export function getDefaultClientConfig() {
   const chainConfig = createBeaconConfig(
@@ -38,7 +39,14 @@ export async function optimisticUpdateVerify(
     const headerBlockRoot = phase0.ssz.BeaconBlockHeader.hashTreeRoot(
       header.beacon,
     );
-    const committeeFast = this.deserializeSyncCommittee(committee);
+
+    const committeeFast = deserializeSyncCommittee({
+      pubkeys: committee,
+      aggregatePubkey: bls.PublicKey.aggregate(
+        deserializePubkeys(committee),
+      ).toBytes(),
+    });
+
     try {
       assertValidSignedHeader(
         this.config.chainConfig,
