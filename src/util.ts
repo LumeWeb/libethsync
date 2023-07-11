@@ -89,5 +89,5 @@ export async function getConsensusOptimisticUpdate() {
     throw Error(`fetching optimistic update failed`);
   }
 
-  return update;
+  return update.data;
 }
