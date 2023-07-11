@@ -15,6 +15,7 @@ function createDefaultClient(
   });
 }
 
+export { RPCRequest, RPCRequestRaw, RPCResponse } from "./rpc.js";
 export { Client, Prover, VerifyingProvider, createDefaultClient };
 export { IClientProver, ProverRequestCallback };
 export * from "#interfaces.js";
