@@ -6,6 +6,7 @@ import { Bytes32, capella, LightClientUpdate } from "#types.js";
 import {
   consensusClient,
   deserializePubkeys,
+  getConsensusOptimisticUpdate,
   optimisticUpdateFromJSON,
   optimisticUpdateVerify,
 } from "#util.js";
@@ -87,16 +88,8 @@ export default class Client extends BaseClient {
   }
 
   protected async getLatestExecution(): Promise<ExecutionInfo | null> {
-    const resp = await axios.get(
-      `/eth/v1/beacon/light_client/optimistic_update`,
-    );
-
-    const updateJSON = resp.data;
-
-    if (!updateJSON) {
-      throw Error(`fetching optimistic update failed`);
-    }
-    const update = optimisticUpdateFromJSON(updateJSON.data);
+    const updateJSON = await getConsensusOptimisticUpdate();
+    const update = optimisticUpdateFromJSON(updateJSON);
     const verify = await optimisticUpdateVerify(
       this.latestCommittee as Uint8Array[],
       update,

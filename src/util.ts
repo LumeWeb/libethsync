@@ -77,3 +77,15 @@ export function getCommitteeHash(committee: Uint8Array[]): Uint8Array {
 
 export const consensusClient = axios.create();
 axiosRetry(consensusClient, { retries: 3 });
+
+export async function getConsensusOptimisticUpdate() {
+  const resp = await consensusClient.get(
+    `/eth/v1/beacon/light_client/optimistic_update`,
+  );
+
+  const updateJSON = resp.data;
+
+  if (!updateJSON) {
+    throw Error(`fetching optimistic update failed`);
+  }
+}
