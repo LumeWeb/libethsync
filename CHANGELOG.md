@@ -1,3 +1,10 @@
+# [0.1.0-develop.14](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.13...v0.1.0-develop.14) (2023-07-11)
+
+
+### Bug Fixes
+
+* further chainConfig fixes ([8b11911](https://git.lumeweb.com/LumeWeb/libethsync/commit/8b1191165addc8bd981b57a62e3870e54bb6c0ea))
+
 # [0.1.0-develop.13](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.12...v0.1.0-develop.13) (2023-07-11)
 
 
