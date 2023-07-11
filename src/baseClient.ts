@@ -28,7 +28,6 @@ export default abstract class BaseClient {
   protected booted = false;
   private syncMutex = new Mutex();
   protected options: BaseClientOptions;
-  protected;
 
   constructor(options: BaseClientOptions) {
     this.options = options;
@@ -84,6 +83,10 @@ export default abstract class BaseClient {
     }
 
     this.syncMutex.release();
+  }
+
+  public get store(): IStore {
+    return this.options.store as IStore;
   }
 
   // committee and prover index of the first honest prover
