@@ -21,11 +21,39 @@ interface Config extends BaseClientOptions {
 }
 
 export default class Client extends BaseClient {
-  private provider?: IVerifyingProvider;
   protected declare options: Config;
 
   constructor(options: Config) {
     super(options);
+  }
+
+  private _provider?: IVerifyingProvider;
+
+  get provider(): IVerifyingProvider {
+    return this._provider as IVerifyingProvider;
+  }
+
+  async sync(): Promise<void> {
+    await super.sync();
+
+    if (!this._provider) {
+      const { blockHash, blockNumber } = await this.getNextValidExecutionInfo();
+      const factory = this.options.provider;
+      const provider = new factory(
+        this.options.rpcHandler,
+        blockNumber,
+        blockHash,
+      );
+      this.subscribe((ei) => {
+        console.log(
+          `Received a new blockheader: ${ei.blockNumber} ${ei.blockHash}`,
+        );
+        provider.update(ei.blockNumber, ei.blockHash);
+      });
+
+      this._provider = provider;
+      this.booted = true;
+    }
   }
 
   protected async getLatestExecution(): Promise<ExecutionInfo | null> {
@@ -48,29 +76,6 @@ export default class Client extends BaseClient {
       blockHash: updateJSON.attested_header.execution.block_hash,
       blockNumber: updateJSON.attested_header.execution.block_number,
     };
-  }
-
-  async sync(): Promise<void> {
-    await super.sync();
-
-    if (!this.provider) {
-      const { blockHash, blockNumber } = await this.getNextValidExecutionInfo();
-      const factory = this.options.provider;
-      const provider = new factory(
-        this.options.rpcHandler,
-        blockNumber,
-        blockHash,
-      );
-      this.subscribe((ei) => {
-        console.log(
-          `Received a new blockheader: ${ei.blockNumber} ${ei.blockHash}`,
-        );
-        provider.update(ei.blockNumber, ei.blockHash);
-      });
-
-      this.provider = provider;
-      this.booted = true;
-    }
   }
 
   protected syncFromGenesis(): Promise<Uint8Array[]> {
