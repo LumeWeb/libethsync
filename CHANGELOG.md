@@ -1,3 +1,10 @@
+# [0.1.0-develop.9](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.8...v0.1.0-develop.9) (2023-07-11)
+
+
+### Bug Fixes
+
+* getConsensusOptimisticUpdate does not return ([67827c3](https://git.lumeweb.com/LumeWeb/libethsync/commit/67827c3776171caf0699e5449307c3731fc81b9a))
+
 # [0.1.0-develop.8](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.7...v0.1.0-develop.8) (2023-07-11)
 
 # [0.1.0-develop.7](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.6...v0.1.0-develop.7) (2023-07-11)
