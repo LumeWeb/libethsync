@@ -83,9 +83,11 @@ export async function getConsensusOptimisticUpdate() {
     `/eth/v1/beacon/light_client/optimistic_update`,
   );
 
-  const updateJSON = resp.data;
+  const update = resp.data;
 
-  if (!updateJSON) {
+  if (!update) {
     throw Error(`fetching optimistic update failed`);
   }
+
+  return update;
 }
