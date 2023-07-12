@@ -1,3 +1,5 @@
+# [0.1.0-develop.25](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.24...v0.1.0-develop.25) (2023-07-12)
+
 # [0.1.0-develop.24](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.23...v0.1.0-develop.24) (2023-07-11)
 
 
