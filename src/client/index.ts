@@ -1,6 +1,7 @@
 import Client from "./client.js";
-import Prover, { IClientProver, ProverRequestCallback } from "./prover.js";
+import Prover, { ProverRequestCallback } from "../prover.js";
 import VerifyingProvider from "./verifyingProvider.js";
+import Store from "#store.js";
 
 function createDefaultClient(
   proverHandler: ProverRequestCallback,
@@ -8,6 +9,7 @@ function createDefaultClient(
 ): Client {
   return new Client({
     prover: new Prover(proverHandler),
+    store: new Store(60 * 60),
     provider: VerifyingProvider,
     rpcHandler,
   });
@@ -15,5 +17,5 @@ function createDefaultClient(
 
 export { RPCRequest, RPCRequestRaw, RPCResponse } from "./rpc.js";
 export { Client, Prover, VerifyingProvider, createDefaultClient };
-export { IClientProver, ProverRequestCallback };
+export { ProverRequestCallback };
 export * from "#interfaces.js";

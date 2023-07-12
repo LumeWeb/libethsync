@@ -6,14 +6,16 @@ import {
 } from "@lodestar/light-client/utils";
 import { init } from "@chainsafe/bls/switchable";
 import { Mutex } from "async-mutex";
-import { fromHexString } from "@chainsafe/ssz";
-import { getDefaultClientConfig } from "#util.js";
-
-import isNode from "detect-node";
+import { fromHexString, toHexString } from "@chainsafe/ssz";
+import { deserializePubkeys, getDefaultClientConfig } from "#util.js";
+import { capella, LightClientUpdate } from "#types.js";
+import { deserializeSyncCommittee } from "@lodestar/light-client/utils/index.js";
+import bls from "@chainsafe/bls/switchable.js";
+import { assertValidLightClientUpdate } from "@lodestar/light-client/validation.js";
 
 export interface BaseClientOptions {
   prover: IProver;
-  store?: IStore;
+  store: IStore;
 }
 
 export default abstract class BaseClient {
@@ -24,10 +26,10 @@ export default abstract class BaseClient {
     (pk) => fromHexString(pk),
   );
   protected genesisPeriod = computeSyncPeriodAtSlot(this.config.genesis.slot);
-  private genesisTime = this.config.genesis.time;
   protected booted = false;
-  private syncMutex = new Mutex();
   protected options: BaseClientOptions;
+  private genesisTime = this.config.genesis.time;
+  private syncMutex = new Mutex();
 
   constructor(options: BaseClientOptions) {
     this.options = options;
@@ -41,6 +43,10 @@ export default abstract class BaseClient {
 
   public get isSynced() {
     return this._latestPeriod === this.getCurrentPeriod();
+  }
+
+  public get store(): IStore {
+    return this.options.store as IStore;
   }
 
   public async sync(): Promise<void> {
@@ -88,7 +94,6 @@ export default abstract class BaseClient {
   protected async subscribe(callback?: (ei: ExecutionInfo) => void) {
     setInterval(async () => {
       try {
-        await this._sync();
         const ei = await this.getLatestExecution();
         if (ei && ei.blockHash !== this.latestBlockHash) {
           this.latestBlockHash = ei.blockHash;
@@ -100,16 +105,128 @@ export default abstract class BaseClient {
     }, POLLING_DELAY);
   }
 
-  public get store(): IStore {
-    return this.options.store as IStore;
+  protected async getLatestExecution(): Promise<ExecutionInfo | null> {
+    await this._sync();
+    const update = capella.ssz.LightClientUpdate.deserialize(
+      this.store.getUpdate(this.latestPeriod),
+    );
+
+    return {
+      blockHash: toHexString(update.attestedHeader.execution.blockHash),
+      blockNumber: update.attestedHeader.execution.blockNumber,
+    };
+  }
+  async syncProver(
+    startPeriod: number,
+    currentPeriod: number,
+    startCommittee: Uint8Array[],
+  ): Promise<{ syncCommittee: Uint8Array[]; period: number }> {
+    for (let period = startPeriod; period < currentPeriod; period += 1) {
+      try {
+        const updates = await this.options.prover.getSyncUpdate(
+          period,
+          currentPeriod,
+        );
+
+        for (let i = 0; i < updates.length; i++) {
+          const curPeriod = period + i;
+          const update = updates[i];
+
+          const validOrCommittee = await this.syncUpdateVerifyGetCommittee(
+            startCommittee,
+            curPeriod,
+            update,
+          );
+
+          if (!(validOrCommittee as boolean)) {
+            console.log(`Found invalid update at period(${curPeriod})`);
+            return {
+              syncCommittee: startCommittee,
+              period: curPeriod,
+            };
+          }
+
+          await this.options.store.addUpdate(period, update);
+
+          startCommittee = validOrCommittee as Uint8Array[];
+          period = curPeriod;
+        }
+      } catch (e) {
+        console.error(`failed to fetch sync update for period(${period})`);
+        return {
+          syncCommittee: startCommittee,
+          period,
+        };
+      }
+    }
+    return {
+      syncCommittee: startCommittee,
+      period: currentPeriod,
+    };
   }
 
-  // committee and prover index of the first honest prover
-  protected abstract syncFromGenesis(): Promise<Uint8Array[]>;
+  protected async syncUpdateVerifyGetCommittee(
+    prevCommittee: Uint8Array[],
+    period: number,
+    update: LightClientUpdate,
+  ): Promise<false | Uint8Array[]> {
+    const updatePeriod = computeSyncPeriodAtSlot(
+      update.attestedHeader.beacon.slot,
+    );
+    if (period !== updatePeriod) {
+      console.error(
+        `Expected update with period ${period}, but received ${updatePeriod}`,
+      );
+      return false;
+    }
 
-  protected abstract syncFromLastUpdate(
-    startPeriod?: number,
-  ): Promise<Uint8Array[]>;
+    const prevCommitteeFast = deserializeSyncCommittee({
+      pubkeys: prevCommittee,
+      aggregatePubkey: bls.PublicKey.aggregate(
+        deserializePubkeys(prevCommittee),
+      ).toBytes(),
+    });
 
-  protected abstract getLatestExecution(): Promise<ExecutionInfo | null>;
+    try {
+      // check if the update has valid signatures
+      await assertValidLightClientUpdate(
+        this.config.chainConfig,
+        prevCommitteeFast,
+        update,
+      );
+      return update.nextSyncCommittee.pubkeys;
+    } catch (e) {
+      console.error(e);
+      return false;
+    }
+  }
+
+  protected async syncFromGenesis(): Promise<Uint8Array[]> {
+    return this.syncFromLastUpdate(this.genesisPeriod);
+  }
+
+  protected async syncFromLastUpdate(
+    startPeriod = this.latestPeriod,
+  ): Promise<Uint8Array[]> {
+    const currentPeriod = this.getCurrentPeriod();
+    let startCommittee = this.genesisCommittee;
+    console.debug(
+      `Sync started from period(${startPeriod}) to period(${currentPeriod})`,
+    );
+
+    const { syncCommittee, period } = await this.syncProver(
+      startPeriod,
+      currentPeriod,
+      startCommittee,
+    );
+    if (period === currentPeriod) {
+      console.debug(
+        `Sync completed from period(${startPeriod}) to period(${currentPeriod})`,
+      );
+
+      return syncCommittee;
+    }
+
+    throw new Error("no honest prover found");
+  }
 }

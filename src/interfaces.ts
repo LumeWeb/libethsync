@@ -1,24 +1,21 @@
 import { BeaconConfig } from "@lodestar/config";
 import { GenesisData, LightClientUpdate } from "#types.js";
-
-import Provider from "#client/verifyingProvider.js";
+import { ProverRequestCallback } from "#client/index.js";
+import BaseClient from "#baseClient.js";
 
 export interface IProver {
+  get callback(): ProverRequestCallback;
+  set client(value: BaseClient);
   getSyncUpdate(
+    startPeriod: number,
     period: number,
-    currentPeriod: number,
-    cacheCount: number,
-  ): Promise<LightClientUpdate>;
+  ): Promise<LightClientUpdate[]>;
 }
 
 export interface IStore {
-  addUpdate(period: number, update: LightClientUpdate): Promise<void>;
-
+  addUpdate(period: number, update: LightClientUpdate): void;
   getUpdate(period: number): Uint8Array;
-
-  getCommittee(period: number): Uint8Array;
-
-  getCommitteeHashes(period: number, count: number): Uint8Array;
+  hasUpdate(period: number): boolean;
 }
 
 export interface IVerifyingProvider {
@@ -41,15 +38,7 @@ export interface ExecutionInfo {
   blockNumber: number;
 }
 
-export interface ConsensusCommitteeHashesRequest {
+export interface ConsensusCommitteeUpdateRequest {
   start: number;
   count: number;
-}
-
-export interface ConsensusCommitteePeriodRequest {
-  period: number | "latest";
-}
-
-export interface ConsensusBlockRequest {
-  block: number;
 }
