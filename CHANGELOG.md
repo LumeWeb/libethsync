@@ -1,3 +1,10 @@
+# [0.1.0-develop.24](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.23...v0.1.0-develop.24) (2023-07-11)
+
+
+### Bug Fixes
+
+* syncFromGenesis was a no-op ([822b0b4](https://git.lumeweb.com/LumeWeb/libethsync/commit/822b0b46b6efed5fab2908d6103e47bbf55fb957))
+
 # [0.1.0-develop.23](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.22...v0.1.0-develop.23) (2023-07-11)
 
 
