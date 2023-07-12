@@ -28,14 +28,8 @@ interface Config extends BaseClientOptions {
 }
 
 export default class Client extends BaseClient {
-  async sync(): Promise<void> {
-    await super.sync();
-
-    this.subscribe();
-  }
   private beaconUrl: string;
-  private blockCache = new NodeCache({ stdTTL: 60 * 60 * 12 });
-  private blockHashCache = new NodeCache({ stdTTL: 60 * 60 * 12 });
+  private http: AxiosInstance = consensusClient;
 
   constructor(config: Config) {
     super(config);
@@ -48,7 +42,17 @@ export default class Client extends BaseClient {
     this.http.defaults.baseURL = this.beaconUrl;
   }
 
-  private http: AxiosInstance = consensusClient;
+  private _latestOptimisticUpdate: any;
+
+  get latestOptimisticUpdate(): any {
+    return this._latestOptimisticUpdate;
+  }
+
+  async sync(): Promise<void> {
+    await super.sync();
+
+    this.subscribe();
+  }
 
   async syncProver(
     startPeriod: number,
@@ -105,6 +109,8 @@ export default class Client extends BaseClient {
       console.error(`Invalid Optimistic Update: ${verify?.reason}`);
       return null;
     }
+
+    this._latestOptimisticUpdate = updateJSON;
 
     return {
       blockHash: toHexString(update.attestedHeader.execution.blockHash),
