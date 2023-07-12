@@ -3,13 +3,13 @@ import { POLLING_DELAY } from "#constants.js";
 import {
   computeSyncPeriodAtSlot,
   getCurrentSlot,
+  deserializeSyncCommittee,
 } from "@lodestar/light-client/utils";
 import { init } from "@chainsafe/bls/switchable";
 import { Mutex } from "async-mutex";
 import { fromHexString, toHexString } from "@chainsafe/ssz";
 import { deserializePubkeys, getDefaultClientConfig } from "#util.js";
 import { capella, LightClientUpdate } from "#types.js";
-import { deserializeSyncCommittee } from "@lodestar/light-client/utils/index.js";
 import bls from "@chainsafe/bls/switchable.js";
 import { assertValidLightClientUpdate } from "@lodestar/light-client/validation.js";
 
