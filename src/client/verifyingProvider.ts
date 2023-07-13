@@ -45,7 +45,7 @@ import {
   RPCTx,
 } from "./types.js";
 import { keccak256 } from "ethereum-cryptography/keccak";
-import { fromHexString } from "@chainsafe/ssz";
+import { byteArrayEquals, fromHexString } from "@chainsafe/ssz";
 import { RPC } from "#client/rpc.js";
 
 export interface IClientVerifyingProvider extends IVerifyingProvider {
@@ -640,7 +640,10 @@ export default class VerifyingProvider implements IClientVerifyingProvider {
   private verifyCodeHash(code: Bytes, codeHash: Bytes32): boolean {
     return (
       (code === "0x" && codeHash === "0x" + KECCAK256_NULL_S) ||
-      keccak256(fromHexString(codeHash)) === fromHexString(codeHash)
+      byteArrayEquals(
+        keccak256(fromHexString(codeHash)),
+        fromHexString(codeHash),
+      )
     );
   }
 
