@@ -84,7 +84,7 @@ export default class Prover implements IProver {
         .reduce((prev, cur) => {
           return prev.concat(cur);
         }, [])
-        .map((u: any) => capella.ssz.LightClientUpdate.fromJson(u.data)),
+        .map((u: any) => capella.ssz.LightClientUpdate.fromJson(u)),
     );
   }
 }
