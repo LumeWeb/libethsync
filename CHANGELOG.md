@@ -1,3 +1,13 @@
+# [0.1.0-develop.36](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.35...v0.1.0-develop.36) (2023-07-13)
+
+
+### Bug Fixes
+
+* need to use concat not push ([b87017e](https://git.lumeweb.com/LumeWeb/libethsync/commit/b87017eb678282bf47758ca834e2acbc1cf6e516))
+* Revert "fix: create fixSerializedUint8Array helper method to deal with weird quirk of ssz serialize" ([6ef18db](https://git.lumeweb.com/LumeWeb/libethsync/commit/6ef18dbc05b5b5801a6b05cea5056d631e8a094d))
+* temporarily disable block hash check as it is bugged ([91144cb](https://git.lumeweb.com/LumeWeb/libethsync/commit/91144cb5a2b5d05fd301b11501861aadd10a69b5))
+* use byteArrayEquals ([157811b](https://git.lumeweb.com/LumeWeb/libethsync/commit/157811b2348fa94d5d6b076219f34b3b340a50ac))
+
 # [0.1.0-develop.35](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.34...v0.1.0-develop.35) (2023-07-13)
 
 
