@@ -1,3 +1,10 @@
+# [0.1.0-develop.35](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.34...v0.1.0-develop.35) (2023-07-13)
+
+
+### Bug Fixes
+
+* need to disable useClones in node cache ([07845bf](https://git.lumeweb.com/LumeWeb/libethsync/commit/07845bf4d024f2c62d656201beb97123a3052a3a))
+
 # [0.1.0-develop.34](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.33...v0.1.0-develop.34) (2023-07-13)
 
 
