@@ -129,6 +129,10 @@ export default abstract class BaseClient {
       console.error(`Invalid Optimistic Update: ${verify.reason}`);
       return null;
     }
+
+    this._latestOptimisticUpdate =
+      capella.ssz.LightClientOptimisticUpdate.serialize(update);
+
     console.log(
       `Optimistic update verified for slot ${update.attestedHeader.beacon.slot}`,
     );
