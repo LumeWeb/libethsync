@@ -29,8 +29,8 @@ export default class Prover implements IProver {
     count: number,
   ): Promise<LightClientUpdate[]> {
     let end = startPeriod + count;
-    let hasStart = this.client.store.hasUpdate(startPeriod);
-    let hasEnd = this.client.store.hasUpdate(startPeriod + count);
+    let hasStart = this._client?.store.hasUpdate(startPeriod);
+    let hasEnd = this._client?.store.hasUpdate(startPeriod + count);
 
     let trueStart = startPeriod;
     let trueCount = count;
