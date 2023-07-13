@@ -1,3 +1,10 @@
+# [0.1.0-develop.34](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.33...v0.1.0-develop.34) (2023-07-13)
+
+
+### Bug Fixes
+
+* create fixSerializedUint8Array helper method to deal with weird quirk of ssz serialize ([d8430b4](https://git.lumeweb.com/LumeWeb/libethsync/commit/d8430b4a11f99f38f33cf14abfc9ed841e5226e1))
+
 # [0.1.0-develop.33](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.32...v0.1.0-develop.33) (2023-07-13)
 
 # [0.1.0-develop.32](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.31...v0.1.0-develop.32) (2023-07-13)
