@@ -1,3 +1,10 @@
+# [0.1.0-develop.39](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.38...v0.1.0-develop.39) (2023-07-13)
+
+
+### Bug Fixes
+
+* compare code against codehash ([dc4c6b3](https://git.lumeweb.com/LumeWeb/libethsync/commit/dc4c6b3f3635a60ebc6e1a7be9811ff5ada9df66))
+
 # [0.1.0-develop.38](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.37...v0.1.0-develop.38) (2023-07-13)
 
 
