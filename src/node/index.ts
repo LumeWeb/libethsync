@@ -5,18 +5,22 @@ import * as capella from "@lodestar/types/capella";
 import { consensusClient } from "#util.js";
 
 function createDefaultClient(beaconUrl: string): Client {
-  return new Client({
+  const options = {
     store: new Store(),
     prover: new Prover(async (args) => {
-      const res = await consensusClient.get(
-        `/eth/v1/beacon/light_client/updates?start_period=${args.start}&count=${args.count}`,
-      );
-      return res.data.map((u: any) =>
-        capella.ssz.LightClientUpdate.fromJson(u.data),
-      );
+      return (
+        await consensusClient.get(
+          `/eth/v1/beacon/light_client/updates?start_period=${args.start}&count=${args.count}`,
+        )
+      ).data;
     }),
     beaconUrl,
-  });
+  };
+
+  const client = new Client(options);
+  options.prover.client = client;
+
+  return client;
 }
 
 export { Client, Prover, Store, createDefaultClient };
