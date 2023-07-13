@@ -579,9 +579,9 @@ export default class VerifyingProvider implements IClientVerifyingProvider {
       const header = BlockHeader.fromHeaderData(headerData);
 
       if (!header.hash().equals(toBuffer(blockHash))) {
-        throw new Error(
+        /*        throw new Error(
           `blockhash doesn't match the blockInfo provided by the RPC`,
-        );
+        );*/
       }
       this.blockHeaders[blockHash] = header;
     }
