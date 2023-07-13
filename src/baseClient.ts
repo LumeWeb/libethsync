@@ -72,6 +72,7 @@ export default abstract class BaseClient {
     await init("herumi");
 
     await this._sync();
+    await this.getLatestExecution(false);
   }
 
   public getCurrentPeriod(): number {
@@ -187,8 +188,10 @@ export default abstract class BaseClient {
     }
   }
 
-  async getLatestExecution(): Promise<ExecutionInfo | null> {
-    await this._sync();
+  async getLatestExecution(sync = true): Promise<ExecutionInfo | null> {
+    if (sync) {
+      await this._sync();
+    }
 
     const getExecInfo = (u: OptimisticUpdate) => {
       return {
