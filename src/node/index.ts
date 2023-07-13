@@ -12,7 +12,7 @@ function createDefaultClient(beaconUrl: string): Client {
         await consensusClient.get(
           `/eth/v1/beacon/light_client/updates?start_period=${args.start}&count=${args.count}`,
         )
-      ).data;
+      ).data.map((item) => item.data);
     }),
     beaconUrl,
     async optimisticUpdateCallback() {
