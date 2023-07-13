@@ -14,7 +14,7 @@ export interface StoreItem {
 }
 
 export default class Store implements IStore {
-  private store = new NodeCache();
+  private store = new NodeCache({ useClones: false });
 
   constructor(expire: number = 0) {
     this.store.options.stdTTL = 0;
