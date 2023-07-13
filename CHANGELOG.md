@@ -1,3 +1,10 @@
+# [0.1.0-develop.38](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.37...v0.1.0-develop.38) (2023-07-13)
+
+
+### Bug Fixes
+
+* add map to return data property ([3e27281](https://git.lumeweb.com/LumeWeb/libethsync/commit/3e27281a3568c7979bb9a185a2081f9e571e5b07))
+
 # [0.1.0-develop.37](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.36...v0.1.0-develop.37) (2023-07-13)
 
 
