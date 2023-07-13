@@ -8,13 +8,18 @@ import {
 import bls, { init } from "@chainsafe/bls/switchable";
 import { Mutex } from "async-mutex";
 import { fromHexString, toHexString } from "@chainsafe/ssz";
-import { deserializePubkeys, getDefaultClientConfig } from "#util.js";
-import { capella, LightClientUpdate } from "#types.js";
+import {
+  deserializePubkeys,
+  getDefaultClientConfig,
+  optimisticUpdateVerify,
+} from "#util.js";
+import { capella, LightClientUpdate, OptimisticUpdate } from "#types.js";
 import { assertValidLightClientUpdate } from "@lodestar/light-client/validation";
 
 export interface BaseClientOptions {
   prover: IProver;
   store: IStore;
+  optimisticUpdateCallback: () => Promise<OptimisticUpdate>;
 }
 
 export default abstract class BaseClient {
@@ -106,8 +111,19 @@ export default abstract class BaseClient {
 
   protected async getLatestExecution(): Promise<ExecutionInfo | null> {
     await this._sync();
-    const update = capella.ssz.LightClientUpdate.deserialize(
-      this.store.getUpdate(this.latestPeriod),
+    const update = await this.options.optimisticUpdateCallback();
+
+    const verify = await optimisticUpdateVerify(
+      this.latestCommittee as Uint8Array[],
+      update,
+    );
+    // TODO: check the update agains the latest sync commttee
+    if (!verify.correct) {
+      console.error(`Invalid Optimistic Update: ${verify.reason}`);
+      return null;
+    }
+    console.log(
+      `Optimistic update verified for slot ${update.attestedHeader.beacon.slot}`,
     );
 
     return {
