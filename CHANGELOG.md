@@ -1,3 +1,14 @@
+# [0.1.0-develop.28](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.27...v0.1.0-develop.28) (2023-07-13)
+
+
+### Bug Fixes
+
+* add optimisticUpdateCallback to client factory ([c3b47e6](https://git.lumeweb.com/LumeWeb/libethsync/commit/c3b47e67e760aea5c841985ab4d44fb36cff1dae))
+* add optimisticUpdateCallback to options ([464fb21](https://git.lumeweb.com/LumeWeb/libethsync/commit/464fb2109514b147b25d1d760eb4a7677ac8fea3))
+* pass client to prover after creating client in factory. don't try to parse thr messages ([481757e](https://git.lumeweb.com/LumeWeb/libethsync/commit/481757e019729ce3790c5cd07cb89c5d7ded7cf4))
+* simplify logic and use LightClientUpdate.fromJson ([17cb002](https://git.lumeweb.com/LumeWeb/libethsync/commit/17cb00231c44d734cb6f24f48d1a6a045f0c7ae4))
+* use _client not client ([76e22fa](https://git.lumeweb.com/LumeWeb/libethsync/commit/76e22fa34258c771da281457e983a5addfef440b))
+
 # [0.1.0-develop.27](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.26...v0.1.0-develop.27) (2023-07-12)
 
 
