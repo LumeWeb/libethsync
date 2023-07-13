@@ -25,10 +25,4 @@ export default class Client extends BaseClient {
     this.beaconUrl = config.beaconUrl;
     this.http.defaults.baseURL = this.beaconUrl;
   }
-
-  async sync(): Promise<void> {
-    await super.sync();
-
-    this.subscribe();
-  }
 }
