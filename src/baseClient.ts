@@ -5,13 +5,12 @@ import {
   getCurrentSlot,
   deserializeSyncCommittee,
 } from "@lodestar/light-client/utils";
-import { init } from "@chainsafe/bls/switchable";
+import bls, { init } from "@chainsafe/bls/switchable";
 import { Mutex } from "async-mutex";
 import { fromHexString, toHexString } from "@chainsafe/ssz";
 import { deserializePubkeys, getDefaultClientConfig } from "#util.js";
 import { capella, LightClientUpdate } from "#types.js";
-import bls from "@chainsafe/bls/switchable.js";
-import { assertValidLightClientUpdate } from "@lodestar/light-client/validation.js";
+import { assertValidLightClientUpdate } from "@lodestar/light-client/validation";
 
 export interface BaseClientOptions {
   prover: IProver;
@@ -121,43 +120,44 @@ export default abstract class BaseClient {
     currentPeriod: number,
     startCommittee: Uint8Array[],
   ): Promise<{ syncCommittee: Uint8Array[]; period: number }> {
-    for (let period = startPeriod; period < currentPeriod; period += 1) {
-      try {
-        const updates = await this.options.prover.getSyncUpdate(
-          period,
-          currentPeriod,
+    try {
+      const updates = await this.options.prover.getSyncUpdate(
+        startPeriod,
+        currentPeriod - startPeriod,
+      );
+
+      for (let i = 0; i < updates.length; i++) {
+        const curPeriod = startPeriod + i;
+        const update = updates[i];
+
+        const updatePeriod = computeSyncPeriodAtSlot(
+          update.attestedHeader.beacon.slot,
         );
 
-        for (let i = 0; i < updates.length; i++) {
-          const curPeriod = period + i;
-          const update = updates[i];
+        const validOrCommittee = await this.syncUpdateVerifyGetCommittee(
+          startCommittee,
+          curPeriod,
+          update,
+        );
 
-          const validOrCommittee = await this.syncUpdateVerifyGetCommittee(
-            startCommittee,
-            curPeriod,
-            update,
-          );
-
-          if (!(validOrCommittee as boolean)) {
-            console.log(`Found invalid update at period(${curPeriod})`);
-            return {
-              syncCommittee: startCommittee,
-              period: curPeriod,
-            };
-          }
-
-          await this.options.store.addUpdate(period, update);
-
-          startCommittee = validOrCommittee as Uint8Array[];
-          period = curPeriod;
+        if (!(validOrCommittee as boolean)) {
+          console.log(`Found invalid update at period(${curPeriod})`);
+          return {
+            syncCommittee: startCommittee,
+            period: curPeriod,
+          };
         }
-      } catch (e) {
-        console.error(`failed to fetch sync update for period(${period})`);
-        return {
-          syncCommittee: startCommittee,
-          period,
-        };
+
+        await this.options.store.addUpdate(curPeriod, update);
+
+        startCommittee = validOrCommittee as Uint8Array[];
       }
+    } catch (e) {
+      console.error(`failed to fetch sync update for period(${startPeriod})`);
+      return {
+        syncCommittee: startCommittee,
+        period: startPeriod,
+      };
     }
     return {
       syncCommittee: startCommittee,
