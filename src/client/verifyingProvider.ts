@@ -640,10 +640,7 @@ export default class VerifyingProvider implements IClientVerifyingProvider {
   private verifyCodeHash(code: Bytes, codeHash: Bytes32): boolean {
     return (
       (code === "0x" && codeHash === "0x" + KECCAK256_NULL_S) ||
-      byteArrayEquals(
-        keccak256(fromHexString(codeHash)),
-        fromHexString(codeHash),
-      )
+      byteArrayEquals(keccak256(fromHexString(code)), fromHexString(codeHash))
     );
   }
 
