@@ -86,6 +86,56 @@ export default abstract class BaseClient {
     return this.getNextValidExecutionInfo(retry - 1);
   }
 
+  async syncProver(
+    startPeriod: number,
+    currentPeriod: number,
+    startCommittee: Uint8Array[],
+  ): Promise<{ syncCommittee: Uint8Array[]; period: number }> {
+    try {
+      const updates = await this.options.prover.getSyncUpdate(
+        startPeriod,
+        currentPeriod - startPeriod,
+      );
+
+      for (let i = 0; i < updates.length; i++) {
+        const curPeriod = startPeriod + i;
+        const update = updates[i];
+
+        const updatePeriod = computeSyncPeriodAtSlot(
+          update.attestedHeader.beacon.slot,
+        );
+
+        const validOrCommittee = await this.syncUpdateVerifyGetCommittee(
+          startCommittee,
+          curPeriod,
+          update,
+        );
+
+        if (!(validOrCommittee as boolean)) {
+          console.log(`Found invalid update at period(${curPeriod})`);
+          return {
+            syncCommittee: startCommittee,
+            period: curPeriod,
+          };
+        }
+
+        await this.options.store.addUpdate(curPeriod, update);
+
+        startCommittee = validOrCommittee as Uint8Array[];
+      }
+    } catch (e) {
+      console.error(`failed to fetch sync update for period(${startPeriod})`);
+      return {
+        syncCommittee: startCommittee,
+        period: startPeriod,
+      };
+    }
+    return {
+      syncCommittee: startCommittee,
+      period: currentPeriod,
+    };
+  }
+
   protected async _sync() {
     await this.syncMutex.acquire();
 
@@ -140,55 +190,6 @@ export default abstract class BaseClient {
     return {
       blockHash: toHexString(update.attestedHeader.execution.blockHash),
       blockNumber: update.attestedHeader.execution.blockNumber,
-    };
-  }
-  async syncProver(
-    startPeriod: number,
-    currentPeriod: number,
-    startCommittee: Uint8Array[],
-  ): Promise<{ syncCommittee: Uint8Array[]; period: number }> {
-    try {
-      const updates = await this.options.prover.getSyncUpdate(
-        startPeriod,
-        currentPeriod - startPeriod,
-      );
-
-      for (let i = 0; i < updates.length; i++) {
-        const curPeriod = startPeriod + i;
-        const update = updates[i];
-
-        const updatePeriod = computeSyncPeriodAtSlot(
-          update.attestedHeader.beacon.slot,
-        );
-
-        const validOrCommittee = await this.syncUpdateVerifyGetCommittee(
-          startCommittee,
-          curPeriod,
-          update,
-        );
-
-        if (!(validOrCommittee as boolean)) {
-          console.log(`Found invalid update at period(${curPeriod})`);
-          return {
-            syncCommittee: startCommittee,
-            period: curPeriod,
-          };
-        }
-
-        await this.options.store.addUpdate(curPeriod, update);
-
-        startCommittee = validOrCommittee as Uint8Array[];
-      }
-    } catch (e) {
-      console.error(`failed to fetch sync update for period(${startPeriod})`);
-      return {
-        syncCommittee: startCommittee,
-        period: startPeriod,
-      };
-    }
-    return {
-      syncCommittee: startCommittee,
-      period: currentPeriod,
     };
   }
 
