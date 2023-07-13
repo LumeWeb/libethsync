@@ -13,7 +13,11 @@ import {
   getDefaultClientConfig,
   optimisticUpdateVerify,
 } from "#util.js";
-import { LightClientUpdate, OptimisticUpdateCallback } from "#types.js";
+import {
+  LightClientUpdate,
+  OptimisticUpdate,
+  OptimisticUpdateCallback,
+} from "#types.js";
 import { assertValidLightClientUpdate } from "@lodestar/light-client/validation";
 import * as capella from "@lodestar/types/capella";
 
@@ -35,6 +39,7 @@ export default abstract class BaseClient {
   protected options: BaseClientOptions;
   private genesisTime = this.config.genesis.time;
   private syncMutex = new Mutex();
+  private optimisticMutex = new Mutex();
 
   constructor(options: BaseClientOptions) {
     this.options = options;
@@ -168,14 +173,39 @@ export default abstract class BaseClient {
 
   protected async getLatestExecution(): Promise<ExecutionInfo | null> {
     await this._sync();
+
+    const getExecInfo = (u: OptimisticUpdate) => {
+      return {
+        blockHash: toHexString(u.attestedHeader.execution.blockHash),
+        blockNumber: u.attestedHeader.execution.blockNumber,
+      };
+    };
+
+    if (this._latestOptimisticUpdate) {
+      const update = capella.ssz.LightClientOptimisticUpdate.deserialize(
+        this._latestOptimisticUpdate,
+      );
+      const diffInSeconds = Date.now() / 1000 - this.genesisTime;
+      const currentSlot = Math.floor(
+        diffInSeconds / this.config.chainConfig.SECONDS_PER_SLOT,
+      );
+      if (currentSlot <= update.attestedHeader.beacon.slot) {
+        this.optimisticMutex.release();
+        return getExecInfo(update);
+      }
+    }
+
+    await this.optimisticMutex.acquire();
     const update = await this.options.optimisticUpdateCallback();
 
     const verify = await optimisticUpdateVerify(
       this.latestCommittee as Uint8Array[],
       update,
     );
+
     // TODO: check the update against the latest sync committee
     if (!verify.correct) {
+      this.optimisticMutex.release();
       console.error(`Invalid Optimistic Update: ${verify.reason}`);
       return null;
     }
@@ -187,10 +217,9 @@ export default abstract class BaseClient {
       `Optimistic update verified for slot ${update.attestedHeader.beacon.slot}`,
     );
 
-    return {
-      blockHash: toHexString(update.attestedHeader.execution.blockHash),
-      blockNumber: update.attestedHeader.execution.blockNumber,
-    };
+    this.optimisticMutex.release();
+
+    return getExecInfo(update);
   }
 
   protected async syncUpdateVerifyGetCommittee(
