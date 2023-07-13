@@ -171,7 +171,7 @@ export default abstract class BaseClient {
     }
   }
 
-  protected async getLatestExecution(): Promise<ExecutionInfo | null> {
+  async getLatestExecution(): Promise<ExecutionInfo | null> {
     await this._sync();
 
     const getExecInfo = (u: OptimisticUpdate) => {
