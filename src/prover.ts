@@ -61,12 +61,8 @@ export default class Prover implements IProver {
       }
     }
 
-    for (let i = 0; i < trueCount; i++) {
-      updates.push(
-        capella.ssz.LightClientUpdate.deserialize(res[startPeriod + i]),
-      );
-    }
-
-    return updates;
+    return updates.concat(
+      res.map((u: any) => capella.ssz.LightClientUpdate.fromJson(u.data)),
+    );
   }
 }
