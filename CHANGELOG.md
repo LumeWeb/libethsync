@@ -1,3 +1,10 @@
+# [0.1.0-develop.27](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.26...v0.1.0-develop.27) (2023-07-12)
+
+
+### Bug Fixes
+
+* fix import ([baa9562](https://git.lumeweb.com/LumeWeb/libethsync/commit/baa9562749e34db490997b62f5a8f370b355945c))
+
 # [0.1.0-develop.26](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.25...v0.1.0-develop.26) (2023-07-12)
 
 # [0.1.0-develop.25](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.24...v0.1.0-develop.25) (2023-07-12)
