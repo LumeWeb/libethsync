@@ -2,8 +2,8 @@ import { ClientConfig, ExecutionInfo, IProver, IStore } from "#interfaces.js";
 import { POLLING_DELAY } from "#constants.js";
 import {
   computeSyncPeriodAtSlot,
-  getCurrentSlot,
   deserializeSyncCommittee,
+  getCurrentSlot,
 } from "@lodestar/light-client/utils";
 import bls, { init } from "@chainsafe/bls/switchable";
 import { Mutex } from "async-mutex";
@@ -13,13 +13,13 @@ import {
   getDefaultClientConfig,
   optimisticUpdateVerify,
 } from "#util.js";
-import { capella, LightClientUpdate, OptimisticUpdate } from "#types.js";
+import { LightClientUpdate, OptimisticUpdateCallback } from "#types.js";
 import { assertValidLightClientUpdate } from "@lodestar/light-client/validation";
 
 export interface BaseClientOptions {
   prover: IProver;
   store: IStore;
-  optimisticUpdateCallback: () => Promise<OptimisticUpdate>;
+  optimisticUpdateCallback: OptimisticUpdateCallback;
 }
 
 export default abstract class BaseClient {

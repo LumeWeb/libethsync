@@ -18,3 +18,5 @@ export type VerifyWithReason =
   | { correct: false; reason: string };
 
 export { capella, phase0 };
+
+export type OptimisticUpdateCallback = () => Promise<OptimisticUpdate>;
