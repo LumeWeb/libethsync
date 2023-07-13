@@ -154,16 +154,20 @@ export default abstract class BaseClient {
 
   protected async subscribe(callback?: (ei: ExecutionInfo) => void) {
     setInterval(async () => {
-      try {
-        const ei = await this.getLatestExecution();
-        if (ei && ei.blockHash !== this.latestBlockHash) {
-          this.latestBlockHash = ei.blockHash;
-          return await callback?.(ei);
-        }
-      } catch (e) {
-        console.error(e);
-      }
+      await this.syncToLatestBlock(callback);
     }, POLLING_DELAY);
+  }
+
+  public async syncToLatestBlock(callback?: (ei: ExecutionInfo) => void) {
+    try {
+      const ei = await this.getLatestExecution();
+      if (ei && ei.blockHash !== this.latestBlockHash) {
+        this.latestBlockHash = ei.blockHash;
+        return await callback?.(ei);
+      }
+    } catch (e) {
+      console.error(e);
+    }
   }
 
   protected async getLatestExecution(): Promise<ExecutionInfo | null> {
