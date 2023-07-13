@@ -58,7 +58,10 @@ export default abstract class BaseClient {
   }
 
   public get isSynced() {
-    return this._latestPeriod === this.getCurrentPeriod();
+    return (
+      this._latestPeriod === this.getCurrentPeriod() &&
+      this.getLastBlock() === this.getCurrentBlock()
+    );
   }
 
   public get store(): IStore {
