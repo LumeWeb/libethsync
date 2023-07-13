@@ -15,6 +15,7 @@ import {
 } from "#util.js";
 import { LightClientUpdate, OptimisticUpdateCallback } from "#types.js";
 import { assertValidLightClientUpdate } from "@lodestar/light-client/validation";
+import * as capella from "@lodestar/types/capella";
 
 export interface BaseClientOptions {
   prover: IProver;
@@ -37,6 +38,12 @@ export default abstract class BaseClient {
 
   constructor(options: BaseClientOptions) {
     this.options = options;
+  }
+
+  private _latestOptimisticUpdate?: Uint8Array;
+
+  get latestOptimisticUpdate(): Uint8Array {
+    return this._latestOptimisticUpdate as Uint8Array;
   }
 
   private _latestPeriod: number = -1;
@@ -117,7 +124,7 @@ export default abstract class BaseClient {
       this.latestCommittee as Uint8Array[],
       update,
     );
-    // TODO: check the update agains the latest sync commttee
+    // TODO: check the update against the latest sync committee
     if (!verify.correct) {
       console.error(`Invalid Optimistic Update: ${verify.reason}`);
       return null;
