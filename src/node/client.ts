@@ -1,24 +1,8 @@
 import BaseClient, { BaseClientOptions } from "#baseClient.js";
-import { ExecutionInfo, IStore } from "#interfaces.js";
+import { IStore } from "#interfaces.js";
 import axios, { AxiosInstance } from "axios";
 import axiosRetry from "axios-retry";
-import { Bytes32, capella, LightClientUpdate } from "#types.js";
-import {
-  consensusClient,
-  deserializePubkeys,
-  getConsensusOptimisticUpdate,
-  optimisticUpdateFromJSON,
-  optimisticUpdateVerify,
-} from "#util.js";
-import { toHexString } from "@chainsafe/ssz";
-import NodeCache from "node-cache";
-import { DEFAULT_BATCH_SIZE } from "#constants.js";
-import {
-  computeSyncPeriodAtSlot,
-  deserializeSyncCommittee,
-} from "@lodestar/light-client/utils";
-import { assertValidLightClientUpdate } from "@lodestar/light-client/validation";
-import bls from "@chainsafe/bls/switchable";
+import { consensusClient } from "#util.js";
 
 axiosRetry(axios, { retries: 3 });
 
