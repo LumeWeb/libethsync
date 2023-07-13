@@ -464,7 +464,7 @@ export default class VerifyingProvider implements IClientVerifyingProvider {
       .map((r: any) => r.result)
       .reduce(
         (acc, curr, idx, arr) =>
-          idx % 2 === 0 ? acc.push([curr, arr[idx + 1]]) : acc,
+          idx % 2 === 0 ? acc.concat([[curr, arr[idx + 1]]]) : acc,
         [],
       ) as [AccountResponse, CodeResponse][];
 
