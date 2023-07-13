@@ -77,6 +77,19 @@ export default abstract class BaseClient {
     );
   }
 
+  public getCurrentBlock(): number {
+    return getCurrentSlot(this.config.chainConfig, this.genesisTime);
+  }
+  public getLastBlock(): number | null {
+    if (this._latestOptimisticUpdate) {
+      return capella.ssz.LightClientOptimisticUpdate.deserialize(
+        this._latestOptimisticUpdate,
+      ).attestedHeader.beacon.slot;
+    }
+
+    return null;
+  }
+
   public async getNextValidExecutionInfo(
     retry: number = 10,
   ): Promise<ExecutionInfo> {
