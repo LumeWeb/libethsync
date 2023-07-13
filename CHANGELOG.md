@@ -1,3 +1,10 @@
+# [0.1.0-develop.37](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.36...v0.1.0-develop.37) (2023-07-13)
+
+
+### Bug Fixes
+
+* parse from u, not u.data ([8677bc1](https://git.lumeweb.com/LumeWeb/libethsync/commit/8677bc1294a81d37f42cd23d1b7860c458a93e19))
+
 # [0.1.0-develop.36](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.35...v0.1.0-develop.36) (2023-07-13)
 
 
