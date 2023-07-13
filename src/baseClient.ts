@@ -101,10 +101,6 @@ export default abstract class BaseClient {
         const curPeriod = startPeriod + i;
         const update = updates[i];
 
-        const updatePeriod = computeSyncPeriodAtSlot(
-          update.attestedHeader.beacon.slot,
-        );
-
         const validOrCommittee = await this.syncUpdateVerifyGetCommittee(
           startCommittee,
           curPeriod,
