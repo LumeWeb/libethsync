@@ -44,16 +44,34 @@ export default class Prover implements IProver {
       }
     }
 
-    const res = await this.callback({
-      start: trueStart,
-      count: trueCount,
-    });
+    const existingUpdates: LightClientUpdate[] = [];
+    const results: Uint8Array[][] = [];
 
-    const updates: LightClientUpdate[] = [];
+    let batchedStart = trueStart;
+    let batchedCount = trueCount;
+
+    while (true) {
+      const res = await this.callback({
+        start: batchedStart,
+        count: batchedCount,
+      });
+
+      if (res.length <= batchedCount) {
+        if (res.length > 0) {
+          results.push(res);
+          batchedStart += res.length;
+          batchedCount -= res.length;
+        }
+      }
+
+      if (batchedCount == 0) {
+        break;
+      }
+    }
 
     if (trueStart != startPeriod) {
       for (let i = 0; i < trueStart - startPeriod; i++) {
-        updates.push(
+        existingUpdates.push(
           capella.ssz.LightClientUpdate.deserialize(
             this.client.store.getUpdate(startPeriod + i),
           ),
@@ -61,8 +79,12 @@ export default class Prover implements IProver {
       }
     }
 
-    return updates.concat(
-      res.map((u: any) => capella.ssz.LightClientUpdate.fromJson(u.data)),
+    return existingUpdates.concat(
+      results
+        .reduce((prev, cur) => {
+          return prev.concat(cur);
+        }, [])
+        .map((u: any) => capella.ssz.LightClientUpdate.fromJson(u.data)),
     );
   }
 }
