@@ -2,7 +2,7 @@ import Client from "./client.js";
 import Store from "../store.js";
 import Prover from "#prover.js";
 import * as capella from "@lodestar/types/capella";
-import { consensusClient } from "#util.js";
+import { consensusClient, getConsensusOptimisticUpdate } from "#util.js";
 
 function createDefaultClient(beaconUrl: string): Client {
   const options = {
@@ -15,6 +15,11 @@ function createDefaultClient(beaconUrl: string): Client {
       ).data;
     }),
     beaconUrl,
+    async optimisticUpdateCallback() {
+      const update = await getConsensusOptimisticUpdate();
+
+      return capella.ssz.LightClientOptimisticUpdate.fromJson(update);
+    },
   };
 
   const client = new Client(options);
