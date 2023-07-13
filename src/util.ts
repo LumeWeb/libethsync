@@ -131,3 +131,6 @@ function isValidLightClientHeader(
     header.beacon.bodyRoot,
   );
 }
+export function fixSerializedUint8Array(arr: Uint8Array) {
+  return new Uint8Array(Object.values(arr));
+}

@@ -5,6 +5,7 @@ import { concatBytes } from "@noble/hashes/utils";
 import { LightClientUpdate } from "#types.js";
 import * as capella from "@lodestar/types/capella";
 import NodeCache from "node-cache";
+import { fixSerializedUint8Array } from "#util.js";
 
 export interface StoreItem {
   update: Uint8Array;
@@ -22,10 +23,14 @@ export default class Store implements IStore {
   addUpdate(period: number, update: LightClientUpdate) {
     try {
       this.store.set(period, {
-        update: capella.ssz.LightClientUpdate.serialize(update),
-        nextCommittee: CommitteeSSZ.serialize(update.nextSyncCommittee.pubkeys),
-        nextCommitteeHash: digest(
-          concatBytes(...update.nextSyncCommittee.pubkeys),
+        update: fixSerializedUint8Array(
+          capella.ssz.LightClientUpdate.serialize(update),
+        ),
+        nextCommittee: fixSerializedUint8Array(
+          CommitteeSSZ.serialize(update.nextSyncCommittee.pubkeys),
+        ),
+        nextCommitteeHash: fixSerializedUint8Array(
+          digest(concatBytes(...update.nextSyncCommittee.pubkeys)),
         ),
       });
     } catch (e) {
