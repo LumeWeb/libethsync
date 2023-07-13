@@ -1,3 +1,10 @@
+# [0.1.0-develop.32](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.31...v0.1.0-develop.32) (2023-07-13)
+
+
+### Features
+
+* add getCurrentBlock and getLastBlock methods ([661e146](https://git.lumeweb.com/LumeWeb/libethsync/commit/661e146636a9f685e8cbae04c52b1d0a1ede3bff))
+
 # [0.1.0-develop.31](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.30...v0.1.0-develop.31) (2023-07-13)
 
 # [0.1.0-develop.30](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.29...v0.1.0-develop.30) (2023-07-13)
