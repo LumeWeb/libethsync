@@ -25,6 +25,7 @@ export interface BaseClientOptions {
   prover: IProver;
   store: IStore;
   optimisticUpdateCallback: OptimisticUpdateCallback;
+  syncDelay?: number;
 }
 
 export default abstract class BaseClient {
@@ -140,6 +141,12 @@ export default abstract class BaseClient {
         await this.options.store.addUpdate(curPeriod, update);
 
         startCommittee = validOrCommittee as Uint8Array[];
+
+        if (this.options.syncDelay) {
+          await new Promise((resolve) =>
+            setTimeout(resolve, this.options.syncDelay),
+          );
+        }
       }
     } catch (e) {
       console.error(`failed to fetch sync update for period(${startPeriod})`);
