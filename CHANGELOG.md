@@ -1,3 +1,10 @@
+# [0.1.0-develop.40](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.39...v0.1.0-develop.40) (2023-07-14)
+
+
+### Bug Fixes
+
+* add a sync delay option so that the bls verification does not hog cpu ([824dcd9](https://git.lumeweb.com/LumeWeb/libethsync/commit/824dcd96339410ffa9f0afb744a1baf3bed722d6))
+
 # [0.1.0-develop.39](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.38...v0.1.0-develop.39) (2023-07-13)
 
 
