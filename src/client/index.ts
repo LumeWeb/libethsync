@@ -11,6 +11,7 @@ function createDefaultClient(
   optimisticUpdateHandler: OptimisticUpdateCallback,
   loggerInfo: (...any) => void,
   loggerErr: (...any) => void,
+  syncDelay?: number,
 ): Client {
   return new Client({
     prover: new Prover(proverHandler),
@@ -20,6 +21,7 @@ function createDefaultClient(
     optimisticUpdateCallback: optimisticUpdateHandler,
     loggerInfo,
     loggerErr,
+    syncDelay,
   });
 }
 
