@@ -29,7 +29,7 @@ export default class Client extends BaseClient {
         blockHash,
       );
       this.subscribe((ei) => {
-        console.log(
+        this.options.loggerInfo(
           `Received a new blockheader: ${ei.blockNumber} ${ei.blockHash}`,
         );
         provider.update(ei.blockNumber, ei.blockHash);

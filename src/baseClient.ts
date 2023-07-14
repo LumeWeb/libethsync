@@ -26,6 +26,8 @@ export interface BaseClientOptions {
   store: IStore;
   optimisticUpdateCallback: OptimisticUpdateCallback;
   syncDelay?: number;
+  loggerInfo: (...any) => void;
+  loggerErr: (...any) => void;
 }
 
 export default abstract class BaseClient {
@@ -131,7 +133,9 @@ export default abstract class BaseClient {
         );
 
         if (!(validOrCommittee as boolean)) {
-          console.log(`Found invalid update at period(${curPeriod})`);
+          this.options.loggerInfo(
+            `Found invalid update at period(${curPeriod})`,
+          );
           return {
             syncCommittee: startCommittee,
             period: curPeriod,
@@ -239,7 +243,7 @@ export default abstract class BaseClient {
     this._latestOptimisticUpdate =
       capella.ssz.LightClientOptimisticUpdate.serialize(update);
 
-    console.log(
+    this.options.loggerInfo(
       `Optimistic update verified for slot ${update.attestedHeader.beacon.slot}`,
     );
 

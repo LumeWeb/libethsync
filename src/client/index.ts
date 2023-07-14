@@ -9,6 +9,8 @@ function createDefaultClient(
   proverHandler: ProverRequestCallback,
   rpcHandler: Function,
   optimisticUpdateHandler: OptimisticUpdateCallback,
+  loggerInfo: (...any) => void,
+  loggerErr: (...any) => void,
 ): Client {
   return new Client({
     prover: new Prover(proverHandler),
@@ -16,6 +18,8 @@ function createDefaultClient(
     provider: VerifyingProvider,
     rpcHandler,
     optimisticUpdateCallback: optimisticUpdateHandler,
+    loggerInfo,
+    loggerErr,
   });
 }
 

@@ -20,6 +20,8 @@ function createDefaultClient(beaconUrl: string): Client {
 
       return capella.ssz.LightClientOptimisticUpdate.fromJson(update);
     },
+    loggerInfo: console.log,
+    loggerErr: console.error,
   };
 
   const client = new Client(options);
