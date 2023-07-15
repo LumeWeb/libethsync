@@ -1,3 +1,10 @@
+# [0.1.0-develop.41](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.40...v0.1.0-develop.41) (2023-07-14)
+
+
+### Features
+
+* add loggerInfo and loggerErr callbacks to client options ([a901ee7](https://git.lumeweb.com/LumeWeb/libethsync/commit/a901ee76f4703d6e7f4793e96cfe173037f2103f))
+
 # [0.1.0-develop.40](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.39...v0.1.0-develop.40) (2023-07-14)
 
 
