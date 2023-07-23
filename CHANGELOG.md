@@ -1,3 +1,10 @@
+# [0.1.0-develop.43](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.42...v0.1.0-develop.43) (2023-07-23)
+
+
+### Features
+
+* use event emitter and emit "update" on every light client update processed ([232af83](https://git.lumeweb.com/LumeWeb/libethsync/commit/232af830c9c844fa5b6f2e5b4c50c2f0a067188e))
+
 # [0.1.0-develop.42](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.41...v0.1.0-develop.42) (2023-07-15)
 
 # [0.1.0-develop.41](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.40...v0.1.0-develop.41) (2023-07-14)
