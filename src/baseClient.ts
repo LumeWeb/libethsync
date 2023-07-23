@@ -145,7 +145,7 @@ export default abstract class BaseClient extends EventEmitter {
 
         startCommittee = validOrCommittee as Uint8Array[];
 
-        this.emit("update", i, updates.length);
+        this.emit("update", i + 1, updates.length);
 
         if (this.options.syncDelay) {
           await new Promise((resolve) =>
