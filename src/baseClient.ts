@@ -177,6 +177,7 @@ export default abstract class BaseClient extends EventEmitter {
         this.latestCommittee = await this.syncFromLastUpdate();
       }
       this._latestPeriod = currentPeriod;
+      this.emit("synced");
     }
 
     this.syncMutex.release();
