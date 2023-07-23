@@ -47,6 +47,7 @@
         "axios-retry": "^3.5.1",
         "detect-node": "^2.1.0",
         "ethereum-cryptography": "^2.0.0",
+        "events": "^3.3.0",
         "node-cache": "^5.1.2",
         "rlp": "^3.0.0",
         "web3-types": "^1.0.1"

@@ -20,6 +20,7 @@ import {
 } from "#types.js";
 import { assertValidLightClientUpdate } from "@lodestar/light-client/validation";
 import * as capella from "@lodestar/types/capella";
+import { EventEmitter } from "events";
 
 export interface BaseClientOptions {
   prover: IProver;
@@ -30,7 +31,7 @@ export interface BaseClientOptions {
   loggerErr: (...any) => void;
 }
 
-export default abstract class BaseClient {
+export default abstract class BaseClient extends EventEmitter {
   protected latestCommittee?: Uint8Array[];
   protected latestBlockHash?: string;
   protected config: ClientConfig = getDefaultClientConfig();
@@ -45,6 +46,7 @@ export default abstract class BaseClient {
   private optimisticMutex = new Mutex();
 
   constructor(options: BaseClientOptions) {
+    super();
     this.options = options;
   }
 
@@ -142,6 +144,8 @@ export default abstract class BaseClient {
         await this.options.store.addUpdate(curPeriod, update);
 
         startCommittee = validOrCommittee as Uint8Array[];
+
+        this.emit("update", update);
 
         if (this.options.syncDelay) {
           await new Promise((resolve) =>
