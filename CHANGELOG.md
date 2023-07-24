@@ -1,3 +1,10 @@
+# [0.1.0-develop.48](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.47...v0.1.0-develop.48) (2023-07-24)
+
+
+### Bug Fixes
+
+* don't release lock when we have cached optimistic update data, as we never locked it ([d3664c8](https://git.lumeweb.com/LumeWeb/libethsync/commit/d3664c8d23c1bbfef53816542f47fc211f94c63c))
+
 # [0.1.0-develop.47](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.46...v0.1.0-develop.47) (2023-07-24)
 
 
