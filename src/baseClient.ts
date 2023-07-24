@@ -222,7 +222,6 @@ export default abstract class BaseClient extends EventEmitter {
         diffInSeconds / this.config.chainConfig.SECONDS_PER_SLOT,
       );
       if (currentSlot <= update.attestedHeader.beacon.slot) {
-        this.optimisticMutex.release();
         return getExecInfo(update);
       }
     }
