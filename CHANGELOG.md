@@ -1,3 +1,10 @@
+# [0.1.0-develop.46](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.45...v0.1.0-develop.46) (2023-07-23)
+
+
+### Features
+
+* add synced event ([0321136](https://git.lumeweb.com/LumeWeb/libethsync/commit/0321136ac00216e6e009f531ffcfb25a4b8f3e09))
+
 # [0.1.0-develop.45](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.44...v0.1.0-develop.45) (2023-07-23)
 
 
