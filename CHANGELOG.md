@@ -1,3 +1,10 @@
+# [0.1.0-develop.47](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.46...v0.1.0-develop.47) (2023-07-24)
+
+
+### Bug Fixes
+
+* incorporate upstream https://github.com/lightclients/patronum/pull/23 ([8b7c85d](https://git.lumeweb.com/LumeWeb/libethsync/commit/8b7c85dd61c585d96e711deca5d0e014a5aa1d12))
+
 # [0.1.0-develop.46](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.45...v0.1.0-develop.46) (2023-07-23)
 
 
