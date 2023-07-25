@@ -86,6 +86,7 @@ export default abstract class BaseClient extends EventEmitter {
   public getCurrentBlock(): number {
     return getCurrentSlot(this.config.chainConfig, this.genesisTime);
   }
+
   public getLastBlock(): number | null {
     if (this._latestOptimisticUpdate) {
       return capella.ssz.LightClientOptimisticUpdate.deserialize(
@@ -227,7 +228,13 @@ export default abstract class BaseClient extends EventEmitter {
     }
 
     await this.optimisticMutex.acquire();
-    const update = await this.options.optimisticUpdateCallback();
+    let update: OptimisticUpdate;
+    try {
+      update = await this.options.optimisticUpdateCallback();
+    } catch (e) {
+      this.optimisticMutex.release();
+      throw e;
+    }
 
     const verify = await optimisticUpdateVerify(
       this.latestCommittee as Uint8Array[],
