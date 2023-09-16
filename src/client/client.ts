@@ -50,10 +50,14 @@ export default class Client extends BaseClient {
       checkpoint.attestedHeader.beacon.slot,
     );
     this.latestCommittee = checkpoint.nextSyncCommittee.pubkeys;
-    this.booted = true;
-    this.emit("synced");
+    if (this._latestPeriod + 1 === this.getCurrentPeriod()) {
+      this.booted = true;
+      this.emit("synced");
 
-    await this.getLatestExecution(false);
+      await this.getLatestExecution(false);
+    } else {
+      await super.sync();
+    }
   }
 
   public async rpcCall(method: string, params: any) {
