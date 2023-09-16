@@ -1,3 +1,10 @@
+# [0.1.0-develop.57](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.56...v0.1.0-develop.57) (2023-09-16)
+
+
+### Bug Fixes
+
+* need to init bls in manual ([d1e88ce](https://git.lumeweb.com/LumeWeb/libethsync/commit/d1e88ce87fa908ca47c176937decd5be96456b0c))
+
 # [0.1.0-develop.56](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.55...v0.1.0-develop.56) (2023-09-16)
 
 
