@@ -1,3 +1,11 @@
+# [0.1.0-develop.59](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.58...v0.1.0-develop.59) (2023-09-16)
+
+
+### Bug Fixes
+
+* if syncing manual, set latest period to value of getCurrentPeriod() before optimistic update ([e742ec8](https://git.lumeweb.com/LumeWeb/libethsync/commit/e742ec8b6482d63469381670ae3f70653757a4fc))
+* send a dummy update event for chain progress ([417da9f](https://git.lumeweb.com/LumeWeb/libethsync/commit/417da9f89302bded91066ab33722fc89adfbd76e))
+
 # [0.1.0-develop.58](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.57...v0.1.0-develop.58) (2023-09-16)
 
 
