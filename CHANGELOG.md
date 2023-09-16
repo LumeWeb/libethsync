@@ -1,3 +1,10 @@
+# [0.1.0-develop.52](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.51...v0.1.0-develop.52) (2023-09-16)
+
+
+### Features
+
+* add syncFromCheckpoint method ([ccaca65](https://git.lumeweb.com/LumeWeb/libethsync/commit/ccaca65a900ec75adc1605e5b22caab4182587dd))
+
 # [0.1.0-develop.51](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.50...v0.1.0-develop.51) (2023-09-16)
 
 
