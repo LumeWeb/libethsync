@@ -1,3 +1,10 @@
+# [0.1.0-develop.60](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.59...v0.1.0-develop.60) (2023-09-16)
+
+
+### Features
+
+* add method to reset the client ([87d8be6](https://git.lumeweb.com/LumeWeb/libethsync/commit/87d8be615e42fef0ae122a29b83cd1974e4ee1a7))
+
 # [0.1.0-develop.59](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.58...v0.1.0-develop.59) (2023-09-16)
 
 
