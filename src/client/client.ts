@@ -55,6 +55,7 @@ export default class Client extends BaseClient {
       this.booted = true;
       this.emit("synced");
       await init("herumi");
+      this._latestPeriod = this.getCurrentPeriod();
 
       await this.getLatestExecution(false);
     } else {
