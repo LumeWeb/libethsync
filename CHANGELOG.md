@@ -1,3 +1,10 @@
+# [0.1.0-develop.55](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.54...v0.1.0-develop.55) (2023-09-16)
+
+
+### Bug Fixes
+
+* as a properly synced node may never hit the computed period at getCurrentPeriod... need to manually emit synced and call getLatestExecution ([19c59eb](https://git.lumeweb.com/LumeWeb/libethsync/commit/19c59eb18944bd6528983fec0f848143aed4742a))
+
 # [0.1.0-develop.54](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.53...v0.1.0-develop.54) (2023-09-16)
 
 
