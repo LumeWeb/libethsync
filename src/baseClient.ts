@@ -56,7 +56,7 @@ export default abstract class BaseClient extends EventEmitter {
     return this._latestOptimisticUpdate as Uint8Array;
   }
 
-  private _latestPeriod: number = -1;
+  protected _latestPeriod: number = -1;
 
   get latestPeriod(): number {
     return this._latestPeriod;

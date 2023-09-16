@@ -1,6 +1,8 @@
 import BaseClient, { BaseClientOptions } from "#baseClient.js";
 import { IProver, IVerifyingProviderConstructor } from "#interfaces.js";
 import { IClientVerifyingProvider } from "#client/verifyingProvider.js";
+import { LightClientUpdate } from "#types.js";
+import { computeSyncPeriodAtSlot } from "@lodestar/light-client/utils/index.js";
 
 interface Config extends BaseClientOptions {
   prover: IProver;
@@ -19,7 +21,10 @@ export default class Client extends BaseClient {
 
   async sync(): Promise<void> {
     await super.sync();
+    await this.boot();
+  }
 
+  private async boot() {
     if (!this.provider) {
       const { blockHash, blockNumber } = await this.getNextValidExecutionInfo();
       const factory = this.options.provider;
@@ -38,6 +43,16 @@ export default class Client extends BaseClient {
       this.provider = provider;
       this.booted = true;
     }
+  }
+
+  public async syncFromCheckpoint(checkpoint: LightClientUpdate) {
+    this._latestPeriod = computeSyncPeriodAtSlot(
+      checkpoint.attestedHeader.beacon.slot,
+    );
+    this.latestCommittee = checkpoint.nextSyncCommittee.pubkeys;
+    this.booted = true;
+
+    await super.sync();
   }
 
   public async rpcCall(method: string, params: any) {
