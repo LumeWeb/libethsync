@@ -5,6 +5,7 @@ import { concatBytes } from "@noble/hashes/utils";
 import { LightClientUpdate } from "#types.js";
 import * as capella from "@lodestar/types/capella";
 import NodeCache from "node-cache";
+import { EventEmitter } from "events";
 
 export interface StoreItem {
   update: Uint8Array;
@@ -12,22 +13,25 @@ export interface StoreItem {
   nextCommitteeHash: Uint8Array;
 }
 
-export default class Store implements IStore {
+export default class Store extends EventEmitter implements IStore {
   private store = new NodeCache({ useClones: false });
 
   constructor(expire: number = 0) {
+    super();
     this.store.options.stdTTL = 0;
   }
 
   addUpdate(period: number, update: LightClientUpdate) {
     try {
+      const serialized = capella.ssz.LightClientUpdate.serialize(update);
       this.store.set(period, {
-        update: capella.ssz.LightClientUpdate.serialize(update),
+        update: serialized,
         nextCommittee: CommitteeSSZ.serialize(update.nextSyncCommittee.pubkeys),
         nextCommitteeHash: digest(
           concatBytes(...update.nextSyncCommittee.pubkeys),
         ),
       });
+      this.emit("set", period, serialized);
     } catch (e) {
       console.log(e);
     }
