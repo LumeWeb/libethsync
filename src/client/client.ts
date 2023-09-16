@@ -3,7 +3,7 @@ import { IProver, IVerifyingProviderConstructor } from "#interfaces.js";
 import { IClientVerifyingProvider } from "#client/verifyingProvider.js";
 import { LightClientUpdate } from "#types.js";
 import { computeSyncPeriodAtSlot } from "@lodestar/light-client/utils";
-import {init} from "@chainsafe/bls/switchable.js";
+import { init } from "@chainsafe/bls/switchable";
 
 interface Config extends BaseClientOptions {
   prover: IProver;
