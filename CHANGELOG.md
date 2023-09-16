@@ -1,3 +1,10 @@
+# [0.1.0-develop.50](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.49...v0.1.0-develop.50) (2023-09-16)
+
+
+### Features
+
+* have Store extend EventEmitter so that it can emit set on adding an update and pass the serialized data ([295aed0](https://git.lumeweb.com/LumeWeb/libethsync/commit/295aed0845249ab81852e4106de66fdca3c5885e))
+
 # [0.1.0-develop.49](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.48...v0.1.0-develop.49) (2023-07-25)
 
 
