@@ -1,3 +1,10 @@
+# [0.1.0-develop.54](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.53...v0.1.0-develop.54) (2023-09-16)
+
+
+### Bug Fixes
+
+* if startPeriod is greater than genesisPeriod, try to use latestCommittee falling back to genesisCommittee ([ec84027](https://git.lumeweb.com/LumeWeb/libethsync/commit/ec8402714f6f9c7ec405c465ea6cc965eabacad5))
+
 # [0.1.0-develop.53](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.52...v0.1.0-develop.53) (2023-09-16)
 
 
