@@ -51,8 +51,9 @@ export default class Client extends BaseClient {
     );
     this.latestCommittee = checkpoint.nextSyncCommittee.pubkeys;
     this.booted = true;
+    this.emit("synced");
 
-    await super.sync();
+    await this.getLatestExecution(false);
   }
 
   public async rpcCall(method: string, params: any) {
