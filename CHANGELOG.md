@@ -1,3 +1,10 @@
+# [0.1.0-develop.53](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.52...v0.1.0-develop.53) (2023-09-16)
+
+
+### Bug Fixes
+
+* bad import ([b9b8b26](https://git.lumeweb.com/LumeWeb/libethsync/commit/b9b8b26ea478fce2ed9a3c9c94fa09846b5feca7))
+
 # [0.1.0-develop.52](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.51...v0.1.0-develop.52) (2023-09-16)
 
 
