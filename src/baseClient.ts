@@ -304,7 +304,10 @@ export default abstract class BaseClient extends EventEmitter {
     startPeriod = this.latestPeriod,
   ): Promise<Uint8Array[]> {
     const currentPeriod = this.getCurrentPeriod();
-    let startCommittee = this.genesisCommittee;
+    let startCommittee =
+      startPeriod > this.genesisPeriod
+        ? this.latestCommittee ?? this.genesisCommittee
+        : this.genesisCommittee;
     console.debug(
       `Sync started from period(${startPeriod}) to period(${currentPeriod})`,
     );
