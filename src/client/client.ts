@@ -59,7 +59,6 @@ export default class Client extends BaseClient {
     );
     this.latestCommittee = checkpoint.nextSyncCommittee.pubkeys;
     if (this._latestPeriod + 1 === this.getCurrentPeriod()) {
-      this.booted = true;
       this.emit("synced");
       await init("herumi");
       this._latestPeriod = this.getCurrentPeriod();
@@ -69,6 +68,7 @@ export default class Client extends BaseClient {
     } else {
       await super.sync();
     }
+    await this.boot();
   }
 
   public async rpcCall(method: string, params: any) {
