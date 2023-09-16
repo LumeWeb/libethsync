@@ -17,6 +17,7 @@ export interface IStore extends EventEmitter {
   addUpdate(period: number, update: LightClientUpdate): void;
   getUpdate(period: number): Uint8Array;
   hasUpdate(period: number): boolean;
+  clear(): void;
 }
 
 export interface IVerifyingProvider {

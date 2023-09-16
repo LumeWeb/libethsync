@@ -21,6 +21,10 @@ export default class Store extends EventEmitter implements IStore {
     this.store.options.stdTTL = 0;
   }
 
+  clear(): void {
+    this.store.flushAll();
+  }
+
   addUpdate(period: number, update: LightClientUpdate) {
     try {
       const serialized = capella.ssz.LightClientUpdate.serialize(update);

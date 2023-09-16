@@ -46,6 +46,13 @@ export default class Client extends BaseClient {
     }
   }
 
+  public reset() {
+    this._latestPeriod = 0;
+    this.latestCommittee = undefined;
+    this.booted = false;
+    this.store.clear();
+  }
+
   public async syncFromCheckpoint(checkpoint: LightClientUpdate) {
     this._latestPeriod = computeSyncPeriodAtSlot(
       checkpoint.attestedHeader.beacon.slot,
