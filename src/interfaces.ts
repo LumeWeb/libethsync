@@ -2,6 +2,7 @@ import { BeaconConfig } from "@lodestar/config";
 import { GenesisData, LightClientUpdate } from "#types.js";
 import { ProverRequestCallback } from "#client/index.js";
 import BaseClient from "#baseClient.js";
+import { EventEmitter } from "events";
 
 export interface IProver {
   get callback(): ProverRequestCallback;
@@ -12,7 +13,7 @@ export interface IProver {
   ): Promise<LightClientUpdate[]>;
 }
 
-export interface IStore {
+export interface IStore extends EventEmitter {
   addUpdate(period: number, update: LightClientUpdate): void;
   getUpdate(period: number): Uint8Array;
   hasUpdate(period: number): boolean;
