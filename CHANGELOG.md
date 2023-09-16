@@ -1,3 +1,10 @@
+# [0.1.0-develop.49](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.48...v0.1.0-develop.49) (2023-07-25)
+
+
+### Bug Fixes
+
+* add try/catch with mutex release on optimisticUpdateCallback ([7075966](https://git.lumeweb.com/LumeWeb/libethsync/commit/7075966227515151490639b0f22a804d6e3b2583))
+
 # [0.1.0-develop.48](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.47...v0.1.0-develop.48) (2023-07-24)
 
 
