@@ -1,3 +1,10 @@
+# [0.1.0-develop.56](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.55...v0.1.0-develop.56) (2023-09-16)
+
+
+### Bug Fixes
+
+* if we are within 1 period of getCurrentPeriod manually call sync actions, otherwise call parent sync ([6500219](https://git.lumeweb.com/LumeWeb/libethsync/commit/65002190b834c5a31c5c8ca1dcf0f5953f83594d))
+
 # [0.1.0-develop.55](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.54...v0.1.0-develop.55) (2023-09-16)
 
 
