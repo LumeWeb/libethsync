@@ -1,3 +1,10 @@
+# [0.1.0-develop.51](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.50...v0.1.0-develop.51) (2023-09-16)
+
+
+### Bug Fixes
+
+* IStore should extend EventEmitter ([9f00d8f](https://git.lumeweb.com/LumeWeb/libethsync/commit/9f00d8fec80d05592974d28c557117419027d21e))
+
 # [0.1.0-develop.50](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.49...v0.1.0-develop.50) (2023-09-16)
 
 
