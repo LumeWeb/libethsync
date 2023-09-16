@@ -2,7 +2,7 @@ import BaseClient, { BaseClientOptions } from "#baseClient.js";
 import { IProver, IVerifyingProviderConstructor } from "#interfaces.js";
 import { IClientVerifyingProvider } from "#client/verifyingProvider.js";
 import { LightClientUpdate } from "#types.js";
-import { computeSyncPeriodAtSlot } from "@lodestar/light-client/utils/index.js";
+import { computeSyncPeriodAtSlot } from "@lodestar/light-client/utils";
 
 interface Config extends BaseClientOptions {
   prover: IProver;
