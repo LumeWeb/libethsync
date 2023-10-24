@@ -72,6 +72,7 @@ export default class VerifyingProvider implements IClientVerifyingProvider {
       eth_estimateGas: this.estimateGas,
       eth_sendRawTransaction: this.sendRawTransaction,
       eth_getTransactionReceipt: this.getTransactionReceipt,
+      eth_getLogs: this.getLogs,
     }),
   );
   private rpc: RPC;
@@ -396,6 +397,19 @@ export default class VerifyingProvider implements IClientVerifyingProvider {
     };
   }
 
+  private async getLogs(...args: any) {
+    const { result: logs, success } = await this.rpc.request({
+      method: "eth_getLogs",
+      params: [args],
+    });
+
+    if (!(success && logs)) {
+      return null;
+    }
+
+    return logs;
+  }
+
   private async getVMCopy(): Promise<VM> {
     if (this.vm === null) {
       const blockchain = await Blockchain.create({ common: this.common });
@@ -519,6 +533,7 @@ export default class VerifyingProvider implements IClientVerifyingProvider {
     await vm.stateManager.commit();
     return vm;
   }
+
   private async getBlockHeader(
     blockOpt: BlockNumberOrTag,
   ): Promise<BlockHeader> {
@@ -527,6 +542,7 @@ export default class VerifyingProvider implements IClientVerifyingProvider {
     const blockHash = await this.getBlockHash(blockNumber);
     return this.getBlockHeaderByHash(blockHash);
   }
+
   private getBlockNumberByBlockNumberOrTag(blockOpt: BlockNumberOrTag): bigint {
     // TODO: add support for blockOpts below
     if (
@@ -548,6 +564,7 @@ export default class VerifyingProvider implements IClientVerifyingProvider {
       return blockNumber;
     }
   }
+
   private async waitForBlockNumber(blockNumber: bigint) {
     if (blockNumber <= this.latestBlockNumber) return;
     console.log(`waiting for blockNumber ${blockNumber}`);
@@ -638,6 +655,7 @@ export default class VerifyingProvider implements IClientVerifyingProvider {
 
     return true;
   }
+
   private verifyCodeHash(code: Bytes, codeHash: Bytes32): boolean {
     return (
       (code === "0x" && codeHash === "0x" + KECCAK256_NULL_S) ||
@@ -664,6 +682,7 @@ export default class VerifyingProvider implements IClientVerifyingProvider {
       );
     }
   }
+
   private async getBlock(header: BlockHeader) {
     const { result: blockInfo, success } = await this.rpc.request({
       method: "eth_getBlockByNumber",
