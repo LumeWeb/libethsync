@@ -1,3 +1,10 @@
+# [0.1.0-develop.62](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.61...v0.1.0-develop.62) (2023-10-24)
+
+
+### Features
+
+* add basic non-verifying eth_getLogs support ([b405ee2](https://git.lumeweb.com/LumeWeb/libethsync/commit/b405ee2581953acc6e8a66dece1a8d1789d5428d))
+
 # [0.1.0-develop.61](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.60...v0.1.0-develop.61) (2023-09-16)
 
 
