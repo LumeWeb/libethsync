@@ -1,3 +1,10 @@
+# [0.1.0-develop.61](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.60...v0.1.0-develop.61) (2023-09-16)
+
+
+### Bug Fixes
+
+* need to call our boot method ([b3f8dba](https://git.lumeweb.com/LumeWeb/libethsync/commit/b3f8dba243465e9a0a6030727e69ab1491cbd2dc))
+
 # [0.1.0-develop.60](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.59...v0.1.0-develop.60) (2023-09-16)
 
 
