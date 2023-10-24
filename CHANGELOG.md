@@ -1,3 +1,10 @@
+# [0.1.0-develop.63](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.62...v0.1.0-develop.63) (2023-10-24)
+
+
+### Bug Fixes
+
+* args should not be var args ([32bf0a4](https://git.lumeweb.com/LumeWeb/libethsync/commit/32bf0a42e2ee22b907768496b094cc1bee4a42cf))
+
 # [0.1.0-develop.62](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.61...v0.1.0-develop.62) (2023-10-24)
 
 
