@@ -397,7 +397,7 @@ export default class VerifyingProvider implements IClientVerifyingProvider {
     };
   }
 
-  private async getLogs(...args: any) {
+  private async getLogs(args: any) {
     const { result: logs, success } = await this.rpc.request({
       method: "eth_getLogs",
       params: [args],
