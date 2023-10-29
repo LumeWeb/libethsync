@@ -1,3 +1,10 @@
+# [0.1.0-develop.64](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.63...v0.1.0-develop.64) (2023-10-29)
+
+
+### Bug Fixes
+
+* wrap sync in try/catch and unlock mutex in a finally ([0963794](https://git.lumeweb.com/LumeWeb/libethsync/commit/09637948e71e88c66b9e40389b4a46c60659f6e3))
+
 # [0.1.0-develop.63](https://git.lumeweb.com/LumeWeb/libethsync/compare/v0.1.0-develop.62...v0.1.0-develop.63) (2023-10-24)
 
 
