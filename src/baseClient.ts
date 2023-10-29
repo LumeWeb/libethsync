@@ -170,18 +170,22 @@ export default abstract class BaseClient extends EventEmitter {
   protected async _sync() {
     await this.syncMutex.acquire();
 
-    const currentPeriod = this.getCurrentPeriod();
-    if (currentPeriod > this._latestPeriod) {
-      if (!this.booted) {
-        this.latestCommittee = await this.syncFromGenesis();
-      } else {
-        this.latestCommittee = await this.syncFromLastUpdate();
+    try {
+      const currentPeriod = this.getCurrentPeriod();
+      if (currentPeriod > this._latestPeriod) {
+        if (!this.booted) {
+          this.latestCommittee = await this.syncFromGenesis();
+        } else {
+          this.latestCommittee = await this.syncFromLastUpdate();
+        }
+        this._latestPeriod = currentPeriod;
+        this.emit("synced");
       }
-      this._latestPeriod = currentPeriod;
-      this.emit("synced");
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.syncMutex.release();
     }
-
-    this.syncMutex.release();
   }
 
   protected async subscribe(callback?: (ei: ExecutionInfo) => void) {
